@@ -1,0 +1,45 @@
+<html>
+ <head>
+  <title>Hello...</title>
+
+  <meta charset="utf-8"> 
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+    
+    Gola caracola
+    
+    </div>
+</body>
+<script>
+  var key ="41768e225598e2bc6430f8ad9fc67059";
+var token = "2c7a58051244ab195d2e007709434262e22ceeabc7443dd70bb11be0532c44ef"
+
+  function getDues(boardNo) {
+
+var xmlhttpBoardName = new XMLHttpRequest();
+var boardNameUrl =  "https://api.trello.com/1/boards/" + boardNo + "/cards/?key=" + key + "&token=" + token;
+
+xmlhttpBoardName.onreadystatechange = function() {
+if (xmlhttpBoardName.readyState === 4 && xmlhttpBoardName.status === 200) {
+var board = JSON.parse(xmlhttpBoardName.responseText);
+var boardName = board[0]["name"]; // HERE YOU HAVE YOUR BOARD NAME
+console.log(boardName);
+}
+}
+
+
+
+xmlhttpBoardName.open("GET", boardNameUrl, true);
+xmlhttpBoardName.send();
+}
+
+getDues("sXTJhiXh");
+
+</script>
+</html>
