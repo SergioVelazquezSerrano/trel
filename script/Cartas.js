@@ -11,6 +11,7 @@ function Carta(id,name, description, nComent, linkCart, membres, dateStart, date
     this.tags=tags;
 }
 
+
 //var cartas =[];
 
 function getCards(cartas,boardNo,key,token) {
@@ -46,15 +47,25 @@ function getCards(cartas,boardNo,key,token) {
                 var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags );
                 cartas.push(carta);
             }
-            return(cartas);
-
+            //mandarcartas();
         }
     }
 
-    xmlhttpBoardName.open("GET", boardNameUrl, true);
+    xmlhttpBoardName.open("GET", boardNameUrl, false);
     xmlhttpBoardName.send();
+    return cartas;
+
 
 }
+
+/*
+var key ="c42b569af23f3fb74bd843c9fdf476b8";
+var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
+var boardNo = "sXTJhiXh";
+var cartas =[]
+*/
+//getCards(cartas,boardNo,key,token);
+//console.log(cartas);
 
 
 
