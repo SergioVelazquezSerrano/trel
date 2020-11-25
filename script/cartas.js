@@ -14,11 +14,11 @@ function Carta(id,name, description, nComent, linkCart, membres, dateStart, date
 //Ser
 //var key ="41768e225598e2bc6430f8ad9fc67059";
 
-var key ="c42b569af23f3fb74bd843c9fdf476b8"
+var key ="c42b569af23f3fb74bd843c9fdf476b8";
 //Ser
 //var token = "2c7a58051244ab195d2e007709434262e22ceeabc7443dd70bb11be0532c44ef"
 
-var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920"
+var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
 
 var cartas =[];
 
@@ -37,13 +37,11 @@ var boardNameUrl =  "https://api.trello.com/1/boards/" + boardNo + "/cards/?key=
 xmlhttpBoardName.onreadystatechange = function() {
 if (xmlhttpBoardName.readyState === 4 && xmlhttpBoardName.status === 200) {
 var cards = JSON.parse(xmlhttpBoardName.responseText);
-<<<<<<< HEAD
+
 
 console.log(cards);
 /*for(var i = 0 ; i < cards.length ; i++){
-=======
-for(var i = 0 ; i < cards.length ; i++){
->>>>>>> e6cc93f0740e21e2983713fc3163593617aa04be
+
 
     var id = cards[i]["id"];
     var name = cards[i]["name"];
