@@ -13,8 +13,8 @@ xmlhttpBoardName.onreadystatechange = function() {
 if (xmlhttpBoardName.readyState === 4 && xmlhttpBoardName.status === 200) {
 var cards = JSON.parse(xmlhttpBoardName.responseText);
 
-//console.log(cards)
-for(var i = 0 ; i < cards.length ; i++){
+console.log(cards);
+/*for(var i = 0 ; i < cards.length ; i++){
 
     //name
     console.log("nombre");
@@ -44,10 +44,9 @@ for(var i = 0 ; i < cards.length ; i++){
         console.log(cards[i]["idMembers"][j]);
     }
     
-}
+}*/
 
 }
-
 }
 
 xmlhttpBoardName.open("GET", boardNameUrl, true);
