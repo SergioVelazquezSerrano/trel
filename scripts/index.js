@@ -15,13 +15,30 @@ function addDates(){
     let dateEnd=document.getElementById("fechEnd").value;
     let key=document.getElementById("key").value;
     let token=document.getElementById("token").value;
-    let url=document.getElementById("url").value;
-
+    let boardNo=document.getElementById("boardNo").value;
+    let dateEndsBool=document.getElementById("dataEndBool").checked;
+    //expresion regular para extraer el id de la url
+    
+    let id=new RegExp("a a");
     console.log(dateIni);
     console.log(dateEnd);
     console.log(key);
     console.log(token);
-    console.log(url);
+    console.log(boardNo);
+    console.log(dateEndsBool);
+}
+
+function expres(){
+    var URL = "https://www.midominio.com/b/document/indice1.txt";
+    console.log(URL);
+    var re =/^(\w+):\/\/([^\/]+)([^]+)$/;
+    var resultado = re.exec(URL);
+    console.log(resultado[3]);
+    var exp=/^(\w+)([^\/]+)([^]+)$/;
+    var resp=re.exec(resultado[3]);
+    console.log(resp);
+
+    
 }
 
 var cartas = getCards(cartas,boardNo,key,token);
@@ -29,8 +46,7 @@ var dates = getdate(dates,boardNo,key,token);
 var membreslist = getMembers(membreslist,boardNo,key,token);
 
 var cardsfin = modify(cartas,dates,membreslist);
-
 console.log(cardsfin);
 
-var cardsfecha = filter(cardsfecha,cardsfin,ini,fin);
-console.log(cardsfecha);
+/*var cardsfecha = filter(cardsfecha,cardsfin,ini,fin);
+console.log(cardsfecha);*/

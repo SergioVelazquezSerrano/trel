@@ -14,8 +14,9 @@
   <script src="scripts/Cartas.js"></script>
   <script src="scripts/Creations.js"></script>
   <script src="scripts/Members.js"></script>
-  <script src="scripts/index.js"></script>
   <script src="scripts/modify.js"></script>
+  <script src="scripts/index.js"></script>
+  
 
 </head>
 <body>
@@ -37,15 +38,28 @@
       <form id="form1">
         <div class="row pt-3">
           <div class="col">
-            <label for="">Fecha de </label>
+            <div class="col">
+              <label for=""> Fecha inicio </label>
+            </div>            
             <input type="date" id="fechIni" min="" max="2021-12-31" step="1" />
           </div>
           <div class="col ">
-            <label for=""> a fecha </label>
-            <input type="date" id="fechEnd" min="" max="2021-12-31" step="1" />
+            <div class=" row ">
+              <div class="col">
+               <div class="col">
+                <label for=""> Fecha fin </label>
+              </div>
+                <input type="date" id="fechEnd" min="" max="2021-12-31" step="1" />
+                  
+              </div>
+              <div class=" col">
+               <input type="checkbox" id="dataEndBool"/>
+               <label for="">¿ También lon no finalizados ?</label>
+             </div>
+            </div>
           </div>
         </div>                   
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label for="">Key</label>
           <input type="text" class="form-control" id="key">          
         </div>
@@ -55,14 +69,15 @@
         </div>
         <div class="form-group">
           <label for="">url</label>
-          <input type="text" class="form-control" id="url">
+          <input type="text" class="form-control" id="boardNo">
         </div>
 
         <div class="col-md-6 offset-md-5">
           
           <button type="button" onclick="addDates()"  class="btn btn-primary">Generar</button>
 
-        </div>               
+        </div> 
+           
       </form>
         </div>
 
