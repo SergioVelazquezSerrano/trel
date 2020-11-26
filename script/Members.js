@@ -3,9 +3,9 @@ function Members(id,name){
     this.name = name;
 }
 
-var memberslist =[];
+//var memberslist =[];
 
-function getMembers(boardNo,key,token) {
+function getMembers(memberslist,boardNo,key,token) {
 
     var xmlhttpBoardName = new XMLHttpRequest();
     var boardNameUrl =  "https://api.trello.com/1/boards/" + boardNo + "/members/?key=" + key + "&token=" + token ;
@@ -21,12 +21,13 @@ function getMembers(boardNo,key,token) {
             }
         }
     }
-
-    xmlhttpBoardName.open("GET", boardNameUrl, true);
+    xmlhttpBoardName.open("GET", boardNameUrl, false);
     xmlhttpBoardName.send();
+    return memberslist;
+
     //console.log(memberslist);
-    return(memberslist);
 }
+
 
 
 //Ser

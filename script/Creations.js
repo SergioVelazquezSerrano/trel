@@ -3,9 +3,9 @@ function Creations(id,date){
     this.date = date;
 }
 
-var dates =[];
+//var dates =[];
 
-function getdate(boardNo,key,token) {
+function getdate(dates,boardNo,key,token) {
 
     var xmlhttpBoardName = new XMLHttpRequest();
     var boardNameUrl =  "https://api.trello.com/1/boards/" + boardNo + "/?actions=createCard&key=" + key + "&token=" + token;
@@ -22,9 +22,9 @@ function getdate(boardNo,key,token) {
         }
     }
 
-    xmlhttpBoardName.open("GET", boardNameUrl, true);
+    xmlhttpBoardName.open("GET", boardNameUrl, false);
     xmlhttpBoardName.send();
-    return dates;
+    return dates
     //console.log(dates);
 }
 
