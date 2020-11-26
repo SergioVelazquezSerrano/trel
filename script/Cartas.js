@@ -12,8 +12,6 @@ function Carta(id,name, description, nComent, linkCart, membres, dateStart, date
 }
 
 
-//var cartas =[];
-
 function getCards(cartas,boardNo,key,token) {
 
     var xmlhttpBoardName = new XMLHttpRequest();
@@ -47,38 +45,12 @@ function getCards(cartas,boardNo,key,token) {
                 var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags );
                 cartas.push(carta);
             }
-            //mandarcartas();
         }
     }
 
     xmlhttpBoardName.open("GET", boardNameUrl, false);
     xmlhttpBoardName.send();
+    
     return cartas;
 
-
 }
-
-/*
-var key ="c42b569af23f3fb74bd843c9fdf476b8";
-var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
-var boardNo = "sXTJhiXh";
-var cartas =[]
-*/
-//getCards(cartas,boardNo,key,token);
-//console.log(cartas);
-
-
-
-//Ser
-//var key ="41768e225598e2bc6430f8ad9fc67059";
-
-//var key ="c42b569af23f3fb74bd843c9fdf476b8";
-//Ser
-//var token = "2c7a58051244ab195d2e007709434262e22ceeabc7443dd70bb11be0532c44ef"
-
-//var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
-
-//var boardNo = "sXTJhiXh";
-
-//getCards(boardNo, key,token);
-
