@@ -11,11 +11,11 @@ function arrayObjToCsv(ar) {
 		for (var i = 0; i < ar.length; i++) {
 			//construimos cabecera del csv
 			if (i == 0)
-				contenido += Object.keys(ar[i]).join(";") + "\n";
+				contenido += Object.keys(ar[i]).join(",") + "\n";
 			//resto del contenido
 			contenido += Object.keys(ar[i]).map(function(key){
 							return ar[i][key];
-						}).join(";") + "\n";
+						}).join(",") + "\n";
 		}
 		//creamos el blob
 		blob =  new Blob(["\ufeff", contenido], {type: 'text/csv'});
