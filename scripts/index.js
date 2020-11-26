@@ -11,35 +11,33 @@ var cardsfin=[];
 var cardsfecha=[];
 
 function addDates(){
+//expresion regular para conexion, host y path
+    var re =/^(\w+):\/\/([^\/]+)([^]+)$/;
+//separador y limitador para separar el path    
+    var sep ="/",limit =4;
+
     let dateIni=document.getElementById("fechIni").value;
     let dateEnd=document.getElementById("fechEnd").value;
     let key=document.getElementById("key").value;
     let token=document.getElementById("token").value;
-    let boardNo=document.getElementById("boardNo").value;
-    let dateEndsBool=document.getElementById("dataEndBool").checked;
-    //expresion regular para extraer el id de la url
     
-    let id=new RegExp("a a");
+    let url=document.getElementById("boardNo").value;
+    //extraccion del id
+    var answer = re.exec(url);
+    var answer=answer[3].split(sep, limit);
+    let boardNo=answer[2];
+    let dateEndsBool=document.getElementById("dataEndBool").checked;
+    
     console.log(dateIni);
     console.log(dateEnd);
     console.log(key);
     console.log(token);
     console.log(boardNo);
     console.log(dateEndsBool);
+  
 }
 
-function expres(){
-    var URL = "https://www.midominio.com/b/document/indice1.txt";
-    console.log(URL);
-    var re =/^(\w+):\/\/([^\/]+)([^]+)$/;
-    var resultado = re.exec(URL);
-    console.log(resultado[3]);
-    var exp=/^(\w+)([^\/]+)([^]+)$/;
-    var resp=re.exec(resultado[3]);
-    console.log(resp);
 
-    
-}
 
 var cartas = getCards(cartas,boardNo,key,token);
 var dates = getdate(dates,boardNo,key,token);
