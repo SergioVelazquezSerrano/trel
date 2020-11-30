@@ -1,6 +1,7 @@
 
 
 function addDates(){
+    
     var cartas=[];
     var dates =[];
     var membreslist =[];
@@ -59,6 +60,8 @@ var dateEndsBool = false;
     
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool);
     console.log(cardsfecha);
+
+    pdf(cardsfecha);
 
 
     clean(cardsfecha);
