@@ -1,5 +1,21 @@
+function pdf(tamaño){
+    var doc = new jsPDF();
+
+    for(var i=0; i<tamaño;i++){
+        var c = "#"+i
+        doc.fromHTML($(c).html(),15,15,{"width":150})
+        doc.addPage();
+    }
+
+    //doc.fromHTML($("#tar").html(),15,15,{"width":150})
+    doc.save('pru.pdf');
+
+}
+
+/*
 function pdf(cardsfecha){
     var doc = new jsPDF();
+    doc.setFontSize(10);
     var text ="";
 
     for( var i=0; i<cardsfecha.length; i++){
@@ -22,16 +38,7 @@ function pdf(cardsfecha){
               doc.addPage();
           }
           text ="";
-
     }
     doc.save('documento.pdf');
 
-
-
-
-
-
-
-
-
-}
+}*/
