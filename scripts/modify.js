@@ -73,7 +73,7 @@ function clean(cardsfecha){
             }
             
 
-            textcoma = text.replaceAll(","," ");
+            textcoma = text.replaceAll(",","; ");
             textsc = textcoma.replaceAll("\n"," ");
 
             //console.log(`obj.${cardsfecha[i]} = ${cardsfecha[i][prop]}`);
