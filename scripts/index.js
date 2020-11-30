@@ -26,8 +26,8 @@ function addDates(){
     answer=answer[3].split(sep, limit);
     boardNo=answer[2];
 
-var key ="c42b569af23f3fb74bd843c9fdf476b8";
-var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
+//var key ="c42b569af23f3fb74bd843c9fdf476b8";
+//var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
 //var boardNo = "sXTJhiXh";
 /*var dateIni = "2020-11-23";
 var dateEnd = "2020-12-07";

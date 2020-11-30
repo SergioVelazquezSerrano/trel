@@ -4,6 +4,7 @@
 
   <meta charset="utf-8"> 
  <!-- CSS -->
+ <link href="css/estyle.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 <!-- jQuery and JS bundle w/ Popper.js -->
@@ -18,73 +19,70 @@
   <script src="scripts/csv.js"></script>
   <script src="scripts/index.js"></script>
   
-
 </head>
 <body>
     <div class="container" >
       <div class="row align-items-center mt-3">
-      <div class="col-md-6 offset-md-4">
+      <div class="col-sm-6 col-md-6 offset-md-4">
         <h1 >PRINT CSV</h1>
       </div>
     </div>
       <div class="row mb-3">
-        <div class="col-md-6 offset-md-4">
+        <div class="col-sm-6 col-md-6 offset-md-4">
           <img src="img/3.jpg" alt="">
         </div>
 
       </div>
       
     </div>
-    <div class="container">
+    <div class="container"> 
       <form id="form1">
-        <div class="row pt-3">
-          <div class="col">
+
+        <div class="container row ">
+          <div class="col-xs-6 col-sm-4 col-md-4 ">
             <div class="col">
               <label for=""> Fecha inicio </label>
             </div>            
             <input type="date" id="fechIni" min="" max="2021-12-31" step="1" />
           </div>
-          <div class="col ">
-            <div class=" row ">
+          <div class="col-sm-8 col-md-8 ">
+            <div class="row ">
               <div class="col">
-               <div class="col">
+               <div class="col-sx-6 col-sm-7 col-md-6">
                 <label for=""> Fecha fin </label>
-              </div>
+              </div class="">
                 <input type="date" id="fechEnd" min="" max="2021-12-31" step="1" />
                   
               </div>
-              <div class=" col">
+              <div class="col-xs-7 col-sm-8 col-md-6 mt-4">
                <input type="checkbox" id="dataEndBool"/>
-               <label for="">¿ También lon no finalizados ?</label>
+               <label for="">¿ También los no finalizados ?</label>
              </div>
             </div>
           </div>
-        </div>                   
+        </div> 
+      </div> 
+      <div class="container">                 
+        
         <div class="form-group mt-3">
           <label for="">Key</label>
-          <input type="text" class="form-control" id="key">          
+          <input type="text" class="form-control " id="key" required /> 
         </div>
         <div class="form-group">
           <label for="">Token</label>
-          <input type="text" class="form-control" id="token">
+          <input type="text" class="form-control" id="token" required/>
         </div>
         <div class="form-group">
           <label for="">url</label>
-          <input type="text" class="form-control" id="boardNo">
+          <input type="text" class="form-control" id="boardNo" required/>
         </div>
-
-        <div class="col-md-6 offset-md-5">
-          
-          <button type="button" onclick="addDates()"  class="btn btn-primary">Generar</button>
-
-        </div> 
-  
-        
+        <div class="row justify-content-center">
+          <div class="col-6 offset-md-5">
+            <input type="submit" value="Generar"  onclick="addDates()"  class="btn btn-primary"/>
+          </div> 
+        </div>
+      </div>
       </form>
-        </div>
-
-    
-      
-
+    </div>
   </body>
 </html>
