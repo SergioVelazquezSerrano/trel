@@ -1,4 +1,4 @@
-function Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ){
+function Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags, tagscolor ){
     this.id = id;
     this.name = name;
     this.description = description;
@@ -9,6 +9,7 @@ function Carta(id,name, description, nComent, linkCart, membres, dateStart, date
     this.dateEnd = dateEnd;
     this.dateEndsBool = dateEndsBool;
     this.tags=tags;
+    this.tagscolor=tagscolor;
 }
 
 //hacemos una conexion sincrona con metodo get y recuperamos las tarjetas del tablero 
@@ -20,6 +21,7 @@ function getCards(cartas,boardNo,key,token) {
     xmlhttpBoardName.onreadystatechange = function() {
         if (xmlhttpBoardName.readyState === 4 && xmlhttpBoardName.status === 200) {
             var cards = JSON.parse(xmlhttpBoardName.responseText);
+            console.log(cards);
             for(var i = 0 ; i < cards.length ; i++){
                 var id = cards[i]["id"];
                 var name = cards[i]["name"];
@@ -31,10 +33,12 @@ function getCards(cartas,boardNo,key,token) {
                 var dateEnd = cards[i]["due"];
                 var dateEndsBool = cards[i]["dueComplete"];
                 var tags = [];
+                var tagscolor =[];
         
                 //etiquetas
                 for(var c=0;c<cards[i]["labels"].length;c++){
                     tags.push(cards[i]["labels"][c]["name"]);
+                    tagscolor.push(cards[i]["labels"][c]["color"]);
                 }
         
                 //miembros
@@ -42,7 +46,7 @@ function getCards(cartas,boardNo,key,token) {
                     membres.push(cards[i]["idMembers"][j]);
                 }
 
-                var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags );
+                var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ,tagscolor);
                 cartas.push(carta);
             }
         }

@@ -7,8 +7,7 @@ function addDates(){
     var membreslist =[];
     var cardsfin=[];
     var cardsfecha=[];
-    var csv = [];
-
+    var checklist = [];
     //expresion regular para conexion, host y path
     var re =/^(\w+):\/\/([^\/]+)([^]+)$/;
     //separador y limitador para separar el path
@@ -39,6 +38,10 @@ var dateEndsBool = false;
     var cartas = getCards(cartas,boardNo,key,token);
     var dates = getdate(dates,boardNo,key,token);
     var membreslist = getMembers(membreslist,boardNo,key,token);
+    var checklist = getCheckList(checklist,boardNo,key,token);
+
+    console.log(checklist);
+
 
     var cardsfin = modify(cartas,dates,membreslist);
 
@@ -60,7 +63,6 @@ var dateEndsBool = false;
 
     
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool);
-    console.log(cardsfecha);
 
 
     addHTML(cardsfecha);
@@ -77,6 +79,7 @@ var dateEndsBool = false;
     
 }
 
+/*
 function addHTML(cardsfecha){
     var tar = document.getElementById("tar");
 
@@ -103,4 +106,43 @@ function addHTML(cardsfecha){
     tar.innerHTML = inner;
 
 }
+*/
 
+function addHTML(cardsfecha){
+    var tar = document.getElementById("tar");
+    var copy = tar.cloneNode();
+
+    var inner = "";
+    var props =[];
+        for (const prop in cardsfecha[0]) {
+            props.push(prop);
+            var div = document.createElement("div");
+            div.innerHTML= prop;
+            copy.appendChild(div);
+        }
+        tar.appendChild(copy);
+    console.log(props)
+
+
+/*
+    for( var i = 0; i< cardsfecha.length; i++){
+        inner = inner + "<div id="+i+">";
+        var cho ="";
+
+        for (const prop in cardsfecha[i]) {
+
+            var aux = cardsfecha[i][prop];
+            if(Array.isArray(aux)){
+                text = "<b>"+prop + " : </b>" +aux.toLocaleString();
+            }else{
+                text = "<b>"+prop + " : </b>" +String(cardsfecha[i][prop]);
+            }
+            cho = cho+"<p>"+text+"</p>";
+        }
+
+        inner = inner +cho + "</div>";
+    }
+
+    tar.innerHTML = inner;
+*/
+}
