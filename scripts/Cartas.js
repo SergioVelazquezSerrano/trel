@@ -1,4 +1,4 @@
-function Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags, tagscolor ){
+function Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags, tagscolor, idchecklist ){
     this.id = id;
     this.name = name;
     this.description = description;
@@ -10,6 +10,7 @@ function Carta(id,name, description, nComent, linkCart, membres, dateStart, date
     this.dateEndsBool = dateEndsBool;
     this.tags=tags;
     this.tagscolor=tagscolor;
+    this.idchecklist=idchecklist;
 }
 
 //hacemos una conexion sincrona con metodo get y recuperamos las tarjetas del tablero 
@@ -34,6 +35,7 @@ function getCards(cartas,boardNo,key,token) {
                 var dateEndsBool = cards[i]["dueComplete"];
                 var tags = [];
                 var tagscolor =[];
+                var idchecklists =[];
         
                 //etiquetas
                 for(var c=0;c<cards[i]["labels"].length;c++){
@@ -46,7 +48,11 @@ function getCards(cartas,boardNo,key,token) {
                     membres.push(cards[i]["idMembers"][j]);
                 }
 
-                var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ,tagscolor);
+                for(var x = 0 ; x< cards[i]["idChecklists"].length; x++){
+                    idchecklists.push(cards[i]["idChecklists"][x]);
+                }
+
+                var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ,tagscolor,idchecklists);
                 cartas.push(carta);
             }
         }
