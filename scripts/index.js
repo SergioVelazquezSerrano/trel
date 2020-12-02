@@ -9,7 +9,7 @@ var dateEndsBool = false;
     //rescatamos las cookis las trabajamos para obtener los valores que necesitamos
     var res=[];
     var cook = document.cookie;
-
+    
     var respuesta= cook.split(";",3);
     for(var p = 0 ; p<respuesta.length; p++){
         res.push(respuesta[p].split("=",2));
@@ -28,6 +28,7 @@ var dateEndsBool = false;
 
     var cardsfecha=[];
 
+    var check=0;
 
     var cartas = getCards(cartas,boardNo,key,token);
     var dates = getdate(dates,boardNo,key,token);
@@ -37,8 +38,9 @@ var dateEndsBool = false;
     var cardsfin = modify(cartas,dates,membreslist,checklist);
     
     //console.log(checklist);
-    console.log(cardsfin);
-    console.log(cardsfin[16]["idchecklist"]);
+    //console.log("finales")
+    //console.log(cardsfin);
+    //console.log(cardsfin[16]["idchecklist"]);
 
 
 
@@ -62,18 +64,23 @@ var dateEndsBool = false;
     
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool);
 
-    console.log(cardsfecha);
+    //console.log("filtadas")
+    //console.log(cardsfecha);
 
+    /*
     addHTML(cardsfecha);
 
 
     pdf(cardsfecha.length);
+    */
+
+    check = clean(cardsfecha);
+
+    console.log("limpiar")
+    console.log(cardsfecha);
 
 
-    clean(cardsfecha);
-
-
-    arrayObjToCsv(cardsfecha);
+    arrayObjToCsv(cardsfecha,check);
     
     
 }

@@ -21,8 +21,11 @@ function modify(cards, dates, membres,checklist){
         }
     }
 
+    console.log("mira aqui")
+    console.log(cards)
     for(var c = 0 ; c<cards.length; c++){
         var id = cards[c]["id"];
+
         if(cards[c]["idchecklist"].length !=0){
             for( x= 0; x<cards[c]["idchecklist"].length; x++){
                 var busq = checklist.find(element=>element["id"]===cards[c]["idchecklist"][x]);

@@ -22,6 +22,8 @@ var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
 var boardNo = "sXTJhiXh";
 */
 
+
+    //habria que ponerlas que no desaparezcan y al dar a logout borrarlas
     document.cookie="key="+"c42b569af23f3fb74bd843c9fdf476b8";
     document.cookie="token="+"40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
     document.cookie="boardNo="+"sXTJhiXh";

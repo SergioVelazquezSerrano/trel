@@ -35,7 +35,7 @@ function getCards(cartas,boardNo,key,token) {
                 var dateEndsBool = cards[i]["dueComplete"];
                 var tags = [];
                 var tagscolor =[];
-                var idchecklists =[];
+                var idchecklist =[];
         
                 //etiquetas
                 for(var c=0;c<cards[i]["labels"].length;c++){
@@ -49,10 +49,10 @@ function getCards(cartas,boardNo,key,token) {
                 }
 
                 for(var x = 0 ; x< cards[i]["idChecklists"].length; x++){
-                    idchecklists.push(cards[i]["idChecklists"][x]);
+                    idchecklist.push(cards[i]["idChecklists"][x]);
                 }
 
-                var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ,tagscolor,idchecklists);
+                var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ,tagscolor,idchecklist);
                 cartas.push(carta);
             }
         }
@@ -61,6 +61,8 @@ function getCards(cartas,boardNo,key,token) {
     xmlhttpBoardName.open("GET", boardNameUrl, false);
     xmlhttpBoardName.send();
     
+    //console.log("iniciales");
+    //console.log(cartas);
     return cartas;
 
 }
