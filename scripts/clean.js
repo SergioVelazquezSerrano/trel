@@ -10,7 +10,6 @@ function clean(cardsfechafilter){
                     for(var c=0 ; c<checks; c++){
                         text = text +" + "+ aux[c]["name"] + " = ";
                         var intro ="";
-                        console.log(cardsfechafilter)
                         for(var cc=0; cc<aux[c]["checkitem"].length;cc++){
                             intro = intro+" * "+aux[c]["checkitem"][cc]["name"] + " : " + aux[c]["checkitem"][cc]["state"]+ " ; ";
                         }
@@ -45,7 +44,6 @@ function clean(cardsfechafilter){
             }
           }
     }
-    console.log(maxcheck);
     return maxcheck;
     //console.log(cardsfechafilter)
     //return cardsfechafilter;

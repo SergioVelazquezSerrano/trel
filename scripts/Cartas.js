@@ -22,7 +22,7 @@ function getCards(cartas,boardNo,key,token) {
     xmlhttpBoardName.onreadystatechange = function() {
         if (xmlhttpBoardName.readyState === 4 && xmlhttpBoardName.status === 200) {
             var cards = JSON.parse(xmlhttpBoardName.responseText);
-            console.log(cards);
+            //console.log(cards);
             for(var i = 0 ; i < cards.length ; i++){
                 var id = cards[i]["id"];
                 var name = cards[i]["name"];

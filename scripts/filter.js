@@ -1,4 +1,4 @@
-function filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool){
+function filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool,checkmembers,ctags){
 
     for( var i = 0; i<cardsfin.length ; i++){
         
@@ -19,11 +19,64 @@ function filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool){
         //comprobamos si quiere solo las finalizadas y sino sacamos todas que coincidan por fechas indicadas
         if(dateEndsBool === true){
             if(ini>=dateIni && fin<=dateEnd && cardsfin[i]["dateEndsBool"]===true){
-                cardsfecha.push(cardsfin[i]);
+                //si hay checkeados
+                if(Object.keys(checkmembers).length != 0){
+                    for(var m = 0 ; m< checkmembers.length; m++){
+                        if(cardsfin[i]["membres"].find(element => element === checkmembers[m])!=undefined){
+                            if(Object.keys(ctags).length != 0){
+                                for( var t = 0; t<ctags.length;t++){
+                                    if(cardsfin[i]["tags"].find(element => element === ctags[t])!=undefined){
+                                        cardsfecha.push(cardsfin[i]);
+                                    }
+                                }
+                            }else{
+                                cardsfecha.push(cardsfin[i]);
+                            }
+                        }
+                    }
+    
+                }else{
+                    if(Object.keys(ctags).length != 0){
+                        for( var t = 0; t<ctags.length;t++){
+                            if(cardsfin[i]["tags"].find(element => element === ctags[t])!=undefined){
+                                cardsfecha.push(cardsfin[i]);
+                            }
+                        }
+                    }else{
+                        cardsfecha.push(cardsfin[i]);
+                    }
+                }
             }
         }else{
             if(ini>=dateIni && fin<=dateEnd){
-                cardsfecha.push(cardsfin[i]);
+                //si hay checkeados
+                if(Object.keys(checkmembers).length != 0){
+                    for(var m = 0 ; m< checkmembers.length; m++){
+                        if(cardsfin[i]["membres"].find(element => element === checkmembers[m])!=undefined){
+                            if(Object.keys(ctags).length != 0){
+                                for( var t = 0; t<ctags.length;t++){
+                                    if(cardsfin[i]["tags"].find(element => element === ctags[t])!=undefined){
+                                        cardsfecha.push(cardsfin[i]);
+                                    }
+                                }
+                            }else{
+                                cardsfecha.push(cardsfin[i]);
+                            }
+                        }
+                    }
+    
+                }else{
+                    if(Object.keys(ctags).length != 0){
+                        for( var t = 0; t<ctags.length;t++){
+                            if(cardsfin[i]["tags"].find(element => element === ctags[t])!=undefined){
+                                cardsfecha.push(cardsfin[i]);
+                            }
+                        }
+                    }else{
+                        cardsfecha.push(cardsfin[i]);
+                    }
+
+                }
             }
         }
 

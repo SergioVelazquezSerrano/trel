@@ -40,8 +40,32 @@ var dateEndsBool = false;
         dateEnd=new Date(dateEnd);
     }
 
+    var cmem =[];
+    var checkmembers = JSON.parse( JSON.stringify( cmem ) );
+    //guardar miembros checkeados
+    for(var i = 0 ; i < membreslist.length ; i++){
+        if(document.getElementById(membreslist[i]["name"]).checked){
+            checkmembers.push(membreslist[i]["name"]);
+        }
+    }
+
+    var ctag = [];
+    var ctags = JSON.parse( JSON.stringify( ctag ) );
+    //guardar tags checkeados
+    for(var i = 0 ; i < labels.length ; i++){
+        if(labels[i]["name"].length>0){
+            var id = labels[i]["name"].replaceAll(" ","");
+            if(document.getElementById(id).checked){
+                ctags.push(labels[i]["name"]);
+            }
+        }
+    }
     
-    var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool);
+
+
+    //console.log(checkmembers);
+    
+    var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool,checkmembers,ctags);
 
     //console.log("filtadas")
     //console.log(cardsfecha);
@@ -52,17 +76,11 @@ var dateEndsBool = false;
 
     pdf(cardsfecha.length);
     */
-   console.log("antes de descargar")
-   console.log(cardsfecha);
 
    var tar = document.getElementById("generarcsv");
    var div = document.createElement("div");
    div.innerHTML= "<input id='gcsv'type='submit' value='GenerarCSV'  onclick='downloadcsv()'  class='btn btn-primary'/>";
    tar.appendChild(div);
-
-
-
-
 
     
     

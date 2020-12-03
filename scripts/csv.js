@@ -1,5 +1,4 @@
 function arrayObjToCsv(ar,check) {
-	alert(check);
 	//comprobamos compatibilidad
 	celda="";
 	if(window.Blob && (window.URL || window.webkitURL)){
@@ -19,12 +18,12 @@ function arrayObjToCsv(ar,check) {
 					}
 				}
 				contenido += Object.keys(ar[i]).join(",") + celda+"\n";
-			}else{
+			}
 			//resto del contenido
 			contenido += Object.keys(ar[i]).map(function(key){
 							return ar[i][key];
 						}).join(",") + "\n";
-			}
+			
 		}
 		//creamos el blob
 		blob =  new Blob(["\ufeff", contenido], {type: 'text/csv'});
