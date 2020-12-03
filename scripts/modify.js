@@ -21,8 +21,6 @@ function modify(cards, dates, membres,checklist){
         }
     }
 
-    console.log("mira aqui")
-    console.log(cards)
     for(var c = 0 ; c<cards.length; c++){
         var id = cards[c]["id"];
 
