@@ -4,7 +4,9 @@ function search(e){
 
     if(document.getElementById("gcsv")){
         document.getElementById("gcsv").remove();
-
+    }
+    if(document.getElementById("gpdf")){
+        document.getElementById("gpdf").remove();
     }
 
 /*var dateIni = "2020-11-23";
@@ -82,6 +84,10 @@ var dateEndsBool = false;
    div.innerHTML= "<input id='gcsv'type='submit' value='GenerarCSV'  onclick='downloadcsv()'  class='btn btn-primary'/>";
    tar.appendChild(div);
 
-    
+   var tar2 = document.getElementById("generarpdf");
+   var div2 = document.createElement("div");
+   div2.innerHTML= "<input id='gpdf'type='submit' value='Generarpdf'  onclick='pdf()'  class='btn btn-primary'/>";
+   tar2.appendChild(div2);
+
     
 }

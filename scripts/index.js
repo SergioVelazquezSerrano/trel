@@ -19,8 +19,11 @@ var checklist = [];
 var labels = [];
 
 var check=0;
+var links =[];
+//var links=getLinks(links,key,token)
 
 var cartas = getCards(cartas,boardNo,key,token);
+cartas= getLinks(cartas,key,token);
 var dates = getdate(dates,boardNo,key,token);
 var membreslist = getMembers(membreslist,boardNo,key,token);
 var checklist = getCheckList(checklist,boardNo,key,token);
@@ -28,7 +31,7 @@ var labels = getLabels(labels,boardNo,key,token);
 
 var cardsfin = modify(cartas,dates,membreslist,checklist);
 
-
+//console.log(cardsfin);
 window.onload = function dinamic(){
     var mem ="";
     for(var i = 0 ; i < membreslist.length ; i++){

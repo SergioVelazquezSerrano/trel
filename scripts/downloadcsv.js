@@ -1,10 +1,12 @@
 function downloadcsv(){
+    /*
     if(document.getElementById("gcsv")){
         document.getElementById("gcsv").remove();
         cardsfecha=[];
 
     }
-
+*/
+    cardsfecha=[];
 
 
 

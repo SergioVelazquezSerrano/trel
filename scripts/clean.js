@@ -4,7 +4,24 @@ function clean(cardsfechafilter){
     for( var i=0; i<cardsfechafilter.length; i++){
         for (const prop in cardsfechafilter[i]) {
             var aux = cardsfechafilter[i][prop];
-            if(prop==="idchecklist"){
+
+            if(prop==="attach"){
+                for(var a = 0 ; a<aux.length; a++){
+                    textsca="";
+                    for( const prop2 in aux[a]){
+                        for( const prop3 in aux[a][prop2]){
+                        if(prop3==="link"){
+                        text = aux[a][prop2][prop3].toLocaleString();
+                        textcoma = text.replaceAll(",","; ");
+                        textsc = textcoma.replaceAll("\n"," ");
+                        textsca = textsca +" ~~ " +textsc;
+                        }}
+                    }
+                    cardsfechafilter[i][prop]=textsca;        
+
+                }
+
+            }else if(prop==="idchecklist"){
                 var checks = aux.length;
                 if(checks!=0){
                     for(var c=0 ; c<checks; c++){
