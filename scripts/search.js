@@ -72,6 +72,14 @@ var dateEndsBool = false;
     //console.log("filtadas")
     //console.log(cardsfecha);
 
+    //PRECARGA AQUI!!!!!
+    document.getElementById("pr").style.display = 'none';
+    alert("va");
+
+    cardsfecha = precarga(cardsfecha);
+
+
+    console.log(cardsfecha);
     /*
     addHTML(cardsfecha);
 

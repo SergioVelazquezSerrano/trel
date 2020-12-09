@@ -12,7 +12,7 @@ function Carta(id,name, description, nComent, linkCart, membres, dateStart, date
     this.tags=tags;
     this.tagscolor=tagscolor;
     this.idchecklist=idchecklist;
-    //this.horas =0;
+    this.horas =0;
 }
 
 //hacemos una conexion sincrona con metodo get y recuperamos las tarjetas del tablero 
