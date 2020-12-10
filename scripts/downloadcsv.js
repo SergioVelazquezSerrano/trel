@@ -1,15 +1,7 @@
 function downloadcsv(){
-    /*
-    if(document.getElementById("gcsv")){
-        document.getElementById("gcsv").remove();
-        cardsfecha=[];
-
-    }
-*/
     cardsfecha=[];
 
-
-
+    //cogemos los valores de las fechas del formulario
     let dateIni=document.getElementById("fechIni").value;
     let dateEnd=document.getElementById("fechEnd").value;
     let dateEndsBool=document.getElementById("dataEndBool").checked;
@@ -26,6 +18,8 @@ function downloadcsv(){
     }else{
         dateEnd=new Date(dateEnd);
     }
+
+    //aseguramos que checkmembers sera una copia vacia
     var cmem =[];
     var checkmembers = JSON.parse( JSON.stringify( cmem ) );
     //guardar miembros checkeados
@@ -35,6 +29,7 @@ function downloadcsv(){
         }
     }
 
+    //aseguramos que ctag sera una copia vacia
     var ctag = [];
     var ctags = JSON.parse( JSON.stringify( ctag ) );
     //guardar tags checkeados
@@ -47,16 +42,15 @@ function downloadcsv(){
         }
     }
 
-
+    //filtramos nuestras cartas por los campos seleccionados en el formulario
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool,checkmembers,ctags);
 
     //clonamos porque aqui machacaremos cardsfechafilter en clean
     cardsfechafilter = JSON.parse( JSON.stringify( cardsfecha ) );
 
+    //limpiamos el objetos para evitar "," y "\n"
     check = clean(cardsfechafilter);
 
-
-
+    //creamos nuestro csv
     arrayObjToCsv(cardsfechafilter,check);
-
 }

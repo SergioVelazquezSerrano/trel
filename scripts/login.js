@@ -1,35 +1,51 @@
-function login(){
+function login(ev){
+    //quitamos evento submit
+    ev.preventDefault();
 
-    //expresion regular para conexion, host y path
-    var re =/^(\w+):\/\/([^\/]+)([^]+)$/;
-    //separador y limitador para separar el path
-    var sep ="/",limit =4;
+    var tableros= [];
 
-    /*let key=document.getElementById("key").value;
+    //almacenamos las variables key,token y username
+    let key=document.getElementById("key").value;
     let token=document.getElementById("token").value;
-    */
-    //let boardNo=document.getElementById("boardNo").value;
+    let username=document.getElementById("username").value;
 
-    //extraccion del id del tablero
-    /*var answer = re.exec(boardNo);
-    answer=answer[3].split(sep, limit);
-    boardNo=answer[2];
-    */
+    //guardamos en cookie el key y el token
+    document.cookie="key="+key;
+    document.cookie="token="+token;
 
-    /*
-var key ="c42b569af23f3fb74bd843c9fdf476b8";
-var token = "40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
-var boardNo = "sXTJhiXh";
-*/
+    //ocultamos contenido de la pagina para realizar una precarga
+    document.getElementById("log").style.display = 'none';
 
+    //guardamos en tableros los tableros de un usuario
+    tableros = getTableros(tableros,username,key,token);
 
-    //habria que ponerlas que no desaparezcan y al dar a logout borrarlas
-    document.cookie="key="+"c42b569af23f3fb74bd843c9fdf476b8";
-    document.cookie="token="+"40234d81e307fe1d361e1fc1668b72747dd7c23464202c4457c2799f8f836920";
-    document.cookie="boardNo="+"sXTJhiXh";
+    //mostramos los tableros del usuario
+    var bor ="";
+    var tabl = document.getElementById("tabl");
+    var div = document.createElement("div");        
 
+    for(var i = 0 ; i < tableros.length ; i++){
+            var id = tableros[i]["id"];
+            var name = tableros[i]["name"];
+            bor = bor + "<input type='checkbox' id="+id+" value="+id+"/>";
+            bor = bor + "<label for="+id+">"+ name+"</label><br>"    
+        }
+    
+    div.innerHTML = bor;
+    tabl.appendChild(div);
 
-
-    window.location.href="filters.html";
-
+    //asignamos evento onchange a cada input checkbox para que seleccione dicho input para trabajar con el
+    for( var b = 0 ; b< tableros.length; b++){
+        document.getElementById(tableros[b]["id"]).onchange = function(targ) {
+            var idtarget = targ.target.id;
+            for( var t= 0; t<tableros.length; t++){
+                if(tableros[t]["id"]===idtarget){
+                    //guardamos en cookis el id del tablero
+                    document.cookie="boardNo="+idtarget;
+                    //redirecionamos a la pagina de filtrados
+                    window.location.href="filters.html";
+                }
+            }
+        };
+    }
 }

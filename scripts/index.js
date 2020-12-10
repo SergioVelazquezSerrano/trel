@@ -1,3 +1,4 @@
+//rescatamos las cookis las trabajamos para obtener los valores que necesitamos
 var res=[];
 var cook = document.cookie;
 
@@ -11,27 +12,38 @@ var key =res[0][1];
 var token=res[1][1];
 var boardNo=res[2][1];
 
+//creamos arrays que necesitaremos a futuro
 var cartas=[];
 var dates =[];
 var membreslist =[];
 var cardsfin=[];
 var checklist = [];
 var labels = [];
-
 var check=0;
 var links =[];
-//var links=getLinks(links,key,token)
 
+//cogemos todas las cartas del tablero
 var cartas = getCards(cartas,boardNo,key,token);
+
+//introducimos en dichas cartas sus links
 cartas= getLinks(cartas,key,token);
+
+//obtenemos las fechas de creacion de las cartas del tablero
 var dates = getdate(dates,boardNo,key,token);
+
+//obtenemos los miembros del tablero
 var membreslist = getMembers(membreslist,boardNo,key,token);
+
+//obtenemos los cheklist del tablero
 var checklist = getCheckList(checklist,boardNo,key,token);
+
+//obtenemos los labels del tablero
 var labels = getLabels(labels,boardNo,key,token);
 
+//modificamos el contenido de nuestras cartas con las fechas, miembros y checklist
 var cardsfin = modify(cartas,dates,membreslist,checklist);
 
-//console.log(cardsfin);
+//cuando se carga el html de la pagina cremos dinamicamente el form de busqueda por miembros y por labels
 window.onload = function dinamic(){
     var mem ="";
     for(var i = 0 ; i < membreslist.length ; i++){
@@ -42,7 +54,6 @@ window.onload = function dinamic(){
     }
     div.innerHTML = mem;
     memb.appendChild(div);
-
 
     var tag ="";
     for(var i = 0 ; i < labels.length ; i++){
@@ -56,7 +67,5 @@ window.onload = function dinamic(){
     }
     div.innerHTML = tag;
     tags.appendChild(div);
-
-
 
 }

@@ -56,17 +56,6 @@ function getCards(cartas,boardNo,key,token) {
                     idchecklist.push(cards[i]["idChecklists"][x]);
                 }
 
-
-
-        
-
-
-
-
-
-
-
-
                 var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ,tagscolor,idchecklist, attach);
                 cartas.push(carta);
             }
@@ -76,8 +65,6 @@ function getCards(cartas,boardNo,key,token) {
     xmlhttpBoardName.open("GET", boardNameUrl, false);
     xmlhttpBoardName.send();
     
-    //console.log("iniciales");
-    console.log(cartas);
+    //retornamos todas las cartas de un tablero
     return cartas;
-
 }

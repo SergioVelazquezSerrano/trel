@@ -1,6 +1,7 @@
 //modificamos los campos de fechacreacion y convertimos los id de los miembros
 function modify(cards, dates, membres,checklist){
 
+    //modificamos los campos de fechacreacion
     for(var i = 0 ; i<cards.length ; i++){
         var id = cards[i]["id"];
         var busq = dates.find(element => element["id"] === id);
@@ -10,6 +11,7 @@ function modify(cards, dates, membres,checklist){
         }
     }
 
+    //modificamos los id de los miembros
     for(var j = 0; j<cards.length; j++){
         var id = cards[j]["id"];
         if(cards[j]["membres"].length != 0){
@@ -21,9 +23,9 @@ function modify(cards, dates, membres,checklist){
         }
     }
 
+    //convertimos los idchecklist 
     for(var c = 0 ; c<cards.length; c++){
         var id = cards[c]["id"];
-
         if(cards[c]["idchecklist"].length !=0){
             for( x= 0; x<cards[c]["idchecklist"].length; x++){
                 var busq = checklist.find(element=>element["id"]===cards[c]["idchecklist"][x]);
@@ -31,11 +33,10 @@ function modify(cards, dates, membres,checklist){
                 cards[c]["idchecklist"][x]=che;
             }
         }
-
     }
 
+    //retornamos nuestras cartas 
     return cards;
-
 }
 
 

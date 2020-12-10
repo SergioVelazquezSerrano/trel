@@ -1,9 +1,8 @@
-
 function Labels(name){
     this.name = name;
 }
 
-
+//hacemos una conexion sincrona con metodo get y recuperamos los labels del tablero 
 function getLabels(labels,boardNo,key,token){
 
         var xmlhttpBoardName = new XMLHttpRequest();
@@ -17,13 +16,12 @@ function getLabels(labels,boardNo,key,token){
                 var label = new Labels(name);
                 labels.push(label);
                 }
-                
             }
         }
         
         xmlhttpBoardName.open("GET", boardNameUrl, false);
         xmlhttpBoardName.send();
         
+        //retornamos los labels
         return labels;
-    
 }

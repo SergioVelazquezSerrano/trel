@@ -2,6 +2,7 @@ function search(e){
     //quitamos el evento por defecto del form
     e.preventDefault();
 
+    //borramos contenido de los divs si ya estan creados
     if(document.getElementById("gcsv")){
         document.getElementById("gcsv").remove();
     }
@@ -9,22 +10,9 @@ function search(e){
         document.getElementById("gpdf").remove();
     }
 
-/*var dateIni = "2020-11-23";
-var dateEnd = "2020-12-07";
-var dateEndsBool = false;
-*/
-
-    //rescatamos las cookis las trabajamos para obtener los valores que necesitamos
-    
-    //console.log(checklist);
-    //console.log("finales")
-    //console.log(cardsfin);
-    //console.log(cardsfin[16]["idchecklist"]);
-
     var cardsfecha=[];
 
-
-
+    //cogemos los valores de las fechas del formulario
     let dateIni=document.getElementById("fechIni").value;
     let dateEnd=document.getElementById("fechEnd").value;
     let dateEndsBool=document.getElementById("dataEndBool").checked;
@@ -42,6 +30,7 @@ var dateEndsBool = false;
         dateEnd=new Date(dateEnd);
     }
 
+    //aseguramos que checkmembers sera una copia vacia
     var cmem =[];
     var checkmembers = JSON.parse( JSON.stringify( cmem ) );
     //guardar miembros checkeados
@@ -51,6 +40,7 @@ var dateEndsBool = false;
         }
     }
 
+    //aseguramos que ctag sera una copia vacia
     var ctag = [];
     var ctags = JSON.parse( JSON.stringify( ctag ) );
     //guardar tags checkeados
@@ -63,23 +53,16 @@ var dateEndsBool = false;
         }
     }
     
-
-
-    //console.log(checkmembers);
-    
+    //filtramos nuestras cartas por los campos seleccionados en el formulario
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool,checkmembers,ctags);
 
-    //console.log("filtadas")
-    //console.log(cardsfecha);
-
     //PRECARGA AQUI!!!!!
+    //ocultamos el div de toda la pagina para saltar a precarga
     document.getElementById("pr").style.display = 'none';
-    alert("va");
 
     cardsfecha = precarga(cardsfecha);
 
 
-    console.log(cardsfecha);
     /*
     addHTML(cardsfecha);
 
@@ -87,15 +70,16 @@ var dateEndsBool = false;
     pdf(cardsfecha.length);
     */
 
-   var tar = document.getElementById("generarcsv");
-   var div = document.createElement("div");
-   div.innerHTML= "<input id='gcsv'type='submit' value='GenerarCSV'  onclick='downloadcsv()'  class='btn btn-primary'/>";
-   tar.appendChild(div);
+    //creamos boton de generarcsv 
+    var tar = document.getElementById("generarcsv");
+    var div = document.createElement("div");
+    div.innerHTML= "<input id='gcsv'type='submit' value='GenerarCSV'  onclick='downloadcsv()'  class='btn btn-primary'/>";
+    tar.appendChild(div);
 
-   var tar2 = document.getElementById("generarpdf");
-   var div2 = document.createElement("div");
-   div2.innerHTML= "<input id='gpdf'type='submit' value='Generarpdf'  onclick='pdf()'  class='btn btn-primary'/>";
-   tar2.appendChild(div2);
+    //creamos boton de generarpdf 
+    var tar2 = document.getElementById("generarpdf");
+    var div2 = document.createElement("div");
+    div2.innerHTML= "<input id='gpdf'type='submit' value='Generarpdf'  onclick='pdf()'  class='btn btn-primary'/>";
+    tar2.appendChild(div2);
 
-    
 }

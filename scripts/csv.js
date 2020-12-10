@@ -12,6 +12,7 @@ function arrayObjToCsv(ar,check) {
 		for (var i = 0; i < ar.length; i++) {
 			//construimos cabecera del csv
 			if (i == 0){
+				//completamos celdas que se pueden repetir como el checklist
 				if(check!=0){
 					for(var c=1;c<check;c++){
 						celda=celda+"idchecklist,"
