@@ -1,7 +1,7 @@
 
 
 function addDates(){
-    
+   
     var cartas=[];
     var dates =[];
     var membreslist =[];
@@ -9,20 +9,21 @@ function addDates(){
     var cardsfecha=[];
     var checklist = [];
     //expresion regular para conexion, host y path
-    var re =/^(\w+):\/\/([^\/]+)([^]+)$/;
+   // var re =/^(\w+):\/\/([^\/]+)([^]+)$/;
     //separador y limitador para separar el path
-    var sep ="/",limit =4;
+   // var sep ="/",limit =4;
 
     let dateIni=document.getElementById("fechIni").value;
     let dateEnd=document.getElementById("fechEnd").value;
     let dateEndsBool=document.getElementById("dataEndBool").checked;
-    /*let key=document.getElementById("key").value;
-    let token=document.getElementById("token").value;
-    */
-    //let boardNo=document.getElementById("boardNo").value;
+    //let key=document.getElementById("key").value;
+   // let token=document.getElementById("token").value;
+
+  //  let boardNo=document.getElementById("boardNo").value;
 
     //extraccion del id del tablero
-    /*var answer = re.exec(boardNo);
+  /*
+    var answer = re.exec(boardNo);
     answer=answer[3].split(sep, limit);
     boardNo=answer[2];
     */
@@ -64,18 +65,20 @@ var dateEndsBool = false;
     
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool);
 
-
+    
     addHTML(cardsfecha);
 
 
-    pdf(cardsfecha.length);
+   // pdf(cardsfecha.length);
 
 
     clean(cardsfecha);
 
 
-    arrayObjToCsv(cardsfecha);
+    //arrayObjToCsv(cardsfecha);
     
+   // cloneForm();
+   
     
 }
 
@@ -107,42 +110,165 @@ function addHTML(cardsfecha){
 
 }
 */
+function printTarClone(i){
+
+   
+    var div= document.getElementById("tar");
+    var cln =div.cloneNode(true);
+   
+   
+    document.getElementById("clon1").appendChild(cln);
+    document.getElementById("tar").setAttribute("id", "tar"+i);
+
+    //modificacion de ids 
+    document.getElementById("idTar").setAttribute("id", "idTar"+i);   
+    document.getElementById("nameTar").setAttribute("id", "nameTar"+i);
+    document.getElementById("descTar").setAttribute("id", "descTar"+i);
+    document.getElementById("linkTar").setAttribute("id", "linkTar"+i);
+    document.getElementById("dateIni").setAttribute("id", "dateIni"+i);
+    document.getElementById("dateEnd").setAttribute("id", "dateEnd"+i);
+    document.getElementById("numCom").setAttribute("id", "numCom"+i);
+    document.getElementById("miemTar").setAttribute("id", "miemTar"+i);
+    document.getElementById("stateTar").setAttribute("id", "stateTar"+i);
+
+    document.getElementById("numPag").setAttribute("id", "numPag"+i);
+   // document.getElementById("idTar").innerHTML=dates.id;
+    //document.getElementById("nameTar").innerHTML=dates.name;
+    //document.getElementById("descTar").innerHTML=dates.description;
+    //document.getElementById("numCom").innerHTML=dates[3];
+    //document.getElementById("linkTar").innerHTML=dates.linkCart;
+    
+    //document.getElementById("miemTar").innerHTML=dates.membres;
+    //document.getElementById("dateIni").innerHTML=dates[6];
+    //document.getElementById("dateEnd").innerHTML=dates[7];
+    //document.getElementById("stateTar").innerHTML=dates[8];
+    //document.getElementById("tagTar").innerHTML=dates.tags;
+   // document.getElementById("idTar").innerHTML=id;
+
+
+}
+
+
+
 
 function addHTML(cardsfecha){
-    var tar = document.getElementById("tar");
-    var copy = tar.cloneNode();
+   
+   
+ for(var i=0; i<cardsfecha.length;i++){
+    //crea las tarjetas con un nuevo id para cada una 
+    printTarClone(i);
+    document.getElementById("numPag"+i).innerHTML=i;
+      for (const prop in cardsfecha[i]) {
+               //console.log(prop);
+            switch(prop){
+                case "id":  
+                   
+                    document.getElementById("idTar"+i).innerHTML=cardsfecha[i].id;
+                  
+                    break;
+                case "name":
+                
+                    document.getElementById("nameTar"+i).innerHTML=cardsfecha[i].name;
+             
+                break;
+                case "description":   
+                  const MAXSIZE = 10;
+                  var text=cardsfecha[i].description;
+                  
 
-    var inner = "";
-    var props =[];
-        for (const prop in cardsfecha[0]) {
-            props.push(prop);
-            var div = document.createElement("div");
-            div.innerHTML= prop;
-            copy.appendChild(div);
-        }
-        tar.appendChild(copy);
-    console.log(props)
+                    if (text.length>MAXSIZE){
+                        
+                        var resText= text.length-MAXSIZE;
+                        var newText= text.slice(0,-resText);
+                        
+                        document.getElementById("descTar"+i).innerHTML=newText+" ...";  
+                    
+                        
+                    }else{
+                        document.getElementById("descTar"+i).innerHTML=cardsfecha[i].description;    
+                    }
+
+                break;
+                case "linkCart":
+                    document.getElementById("linkTar"+i).setAttribute("href", cardsfecha[i].linkCart);
+                break;
+
+                case "dateStart":   
+                    
+                    document.getElementById("dateIni"+i).innerHTML=(cardsfecha[i].dateStart).slice(0,10);  
+                 
+          
+                break;
+                case "dateEnd":
+                
+                    if(cardsfecha[i].dateEnd===null){
+                    document.getElementById("dateEnd"+i).innerHTML=" -- ";  
+                    }else{
+                        document.getElementById("dateEnd"+i).innerHTML=(cardsfecha[i].dateEnd).slice(0,10); 
+                    }
+                break;
+                case "nComent":   
+                  
+                    document.getElementById("numCom"+i).innerHTML=cardsfecha[i].nComent;
+      
+                break;
+                case "membres":
+                    
+                    var mem=cardsfecha[i].membres
+                   
+                    if(mem.length > 0 ){
+                        for (const memb in mem) {
+                        
+                            var li = document.createElement("li");
+                            li.innerHTML= mem[memb];
+                            document.getElementById("miemTar"+i).appendChild(li);
+                        }
+                          
+                        }else{
+                            document.getElementById("miemTar"+i).innerHTML="No existen miembros";
+                        }
+
+                    
+ 
+                break;
+                case "dateEndsBool":
+                        //console.log(cardsfecha[i].dateEndsBool);
+                        if(cardsfecha[i].dateEndsBool){
+                            document.getElementById("stateTar"+i).innerHTML="Finalizada";
+                        }else{
+                            document.getElementById("stateTar"+i).innerHTML="Activa";
+                        }
+                break;
+                case "tagscolor":
+                    console.log(cardsfecha[i].tags);
+                    console.log(cardsfecha[i].tagscolor);
+
+                break;
 
 
-/*
-    for( var i = 0; i< cardsfecha.length; i++){
-        inner = inner + "<div id="+i+">";
-        var cho ="";
-
-        for (const prop in cardsfecha[i]) {
-
-            var aux = cardsfecha[i][prop];
-            if(Array.isArray(aux)){
-                text = "<b>"+prop + " : </b>" +aux.toLocaleString();
-            }else{
-                text = "<b>"+prop + " : </b>" +String(cardsfecha[i][prop]);
+            
             }
-            cho = cho+"<p>"+text+"</p>";
+           
+          
+          
         }
+    
+       
+ }
 
-        inner = inner +cho + "</div>";
+}   
+    
+    /*      
+     for(var i=0; i<cardsfecha.length; i++){
+  
+           cloneForm(cardsfecha[i]);
+          // console.log(dates1)
+           console.log("+++++++++++*********");
+       
+
     }
+      */ 
 
-    tar.innerHTML = inner;
-*/
-}
+
+
+
