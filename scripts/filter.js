@@ -1,5 +1,6 @@
 function filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool,checkmembers,ctags){
 
+    var cardsfecha = [];
     for( var i = 0; i<cardsfin.length ; i++){
         //convertir el dateStart de las cartas en formato date y asignacion sino tiene
         if(cardsfin[i]["dateStart"].slice(0,10) != ""){

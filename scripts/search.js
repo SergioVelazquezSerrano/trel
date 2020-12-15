@@ -2,56 +2,14 @@ function search(e){
     //quitamos el evento por defecto del form
     e.preventDefault();
 
-    //borramos contenido de los divs si ya estan creados
-    if(document.getElementById("gcsv")){
-        document.getElementById("gcsv").remove();
-    }
-    if(document.getElementById("gpdf")){
-        document.getElementById("gpdf").remove();
-    }
+    //cogemos filtros
+    var filtros = filtrosbusq();
 
-    var cardsfecha=[];
-
-    //cogemos los valores de las fechas del formulario
-    let dateIni=document.getElementById("fechIni").value;
-    let dateEnd=document.getElementById("fechEnd").value;
-    let dateEndsBool=document.getElementById("dataEndBool").checked;
-
-    //parseo fechas o les doy fecha limite parseada
-    if(dateIni === ""){
-        dateIni=new Date("1989-09-10")
-    }else{
-        dateIni = new Date(dateIni);
-    }
-
-    if(dateEnd === ""){
-        dateEnd=new Date("2140-12-31")
-    }else{
-        dateEnd=new Date(dateEnd);
-    }
-
-    //aseguramos que checkmembers sera una copia vacia
-    var cmem =[];
-    var checkmembers = JSON.parse( JSON.stringify( cmem ) );
-    //guardar miembros checkeados
-    for(var i = 0 ; i < membreslist.length ; i++){
-        if(document.getElementById(membreslist[i]["name"]).checked){
-            checkmembers.push(membreslist[i]["name"]);
-        }
-    }
-
-    //aseguramos que ctag sera una copia vacia
-    var ctag = [];
-    var ctags = JSON.parse( JSON.stringify( ctag ) );
-    //guardar tags checkeados
-    for(var i = 0 ; i < labels.length ; i++){
-        if(labels[i]["name"].length>0){
-            var id = labels[i]["name"].replaceAll(" ","");
-            if(document.getElementById(id).checked){
-                ctags.push(labels[i]["name"]);
-            }
-        }
-    }
+    dateIni=filtros[0];
+    dateEnd=filtros[1];
+    dateEndsBool=filtros[2];
+    checkmembers=filtros[3];
+    ctags=filtros[4];
     
     //filtramos nuestras cartas por los campos seleccionados en el formulario
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool,checkmembers,ctags);
@@ -62,11 +20,7 @@ function search(e){
 
     cardsfecha = precarga(cardsfecha);
 
-
     /*
-    addHTML(cardsfecha);
-
-
     pdf(cardsfecha.length);
     */
 

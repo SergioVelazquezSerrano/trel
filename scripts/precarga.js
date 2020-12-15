@@ -4,6 +4,16 @@ function precarga(cardsfecha){
     document.getElementById("generarcsv").style.display = 'none';
     document.getElementById("generarpdf").style.display = 'none';
 
+    //borramos contenido clon1
+    const myNod = document.getElementById("clon1");
+        while (myNod.firstChild) {
+            myNod.removeChild(myNod.lastChild);
+        }
+
+
+    document.getElementById("pre").style.display = 'block';
+
+
     //mostramos el nombre de las cartas resultantes con un input tipo number que rellenara usuario si quiere
     var cont ="";
     var pre = document.getElementById("pre");
@@ -50,6 +60,7 @@ function preca(ev){
     document.getElementById("pr").style.display = 'block';
     document.getElementById("generarcsv").style.display = 'block';
     document.getElementById("generarpdf").style.display = 'block';
+    addHTML();
 
     //eliminamos nuestra pagina precarga
     const myNode = document.getElementById("pre");

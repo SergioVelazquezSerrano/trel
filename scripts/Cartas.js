@@ -11,8 +11,8 @@ function Carta(id,name, description, nComent, linkCart, membres, dateStart, date
     this.dateEndsBool = dateEndsBool;
     this.tags=tags;
     this.tagscolor=tagscolor;
-    this.idchecklist=idchecklist;
     this.horas =0;
+    this.idchecklist=idchecklist;
 }
 
 //hacemos una conexion sincrona con metodo get y recuperamos las tarjetas del tablero 
@@ -24,7 +24,6 @@ function getCards(cartas,boardNo,key,token) {
     xmlhttpBoardName.onreadystatechange = function() {
         if (xmlhttpBoardName.readyState === 4 && xmlhttpBoardName.status === 200) {
             var cards = JSON.parse(xmlhttpBoardName.responseText);
-            console.log(cards);
             for(var i = 0 ; i < cards.length ; i++){
                 var id = cards[i]["id"];
                 var name = cards[i]["name"];

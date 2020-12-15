@@ -5,12 +5,17 @@ var cook = document.cookie;
 var respuesta= cook.split(";",3);
 for(var p = 0 ; p<respuesta.length; p++){
     res.push(respuesta[p].split("=",2));
+    //almacenamos nuestras cookies trabajadas
+    if(res[p][0]==="key"){
+        var key=res[p][1];
+    }
+    if(res[p][0]===" token"){
+        var token=res[p][1];
+    }
+    if(res[p][0]===" boardNo"){
+        var boardNo=res[p][1];
+    }
 }
-
-//almacenamos nuestras cookies trabajadas
-var key =res[0][1];
-var token=res[1][1];
-var boardNo=res[2][1];
 
 //creamos arrays que necesitaremos a futuro
 var cartas=[];
