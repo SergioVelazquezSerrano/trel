@@ -25,6 +25,7 @@
     <script src="scripts/Links.js"></script>
     <script src="scripts/modify.js"></script>
     <script src="scripts/filter.js"></script>
+    <script src="scripts/filtrosbusq.js"></script>
     <script src="scripts/clean.js"></script>
     <script src="scripts/addhtml.js"></script>
     <script src="scripts/pdf.js"></script>
@@ -34,6 +35,14 @@
     <script src="scripts/downloadcsv.js"></script>
     <script src="scripts/precarga.js"></script>
 
+    <style>
+      img{ 
+        width: 400px;
+        height: 200px;
+        margin-left: -140px;
+      }
+    </style>
+    
   </head>
 
   <body>
@@ -47,7 +56,7 @@
       </div>
       <div class="row mb-3">
         <div class="col-sm-6 col-md-6 offset-md-4">
-          <img src="img/3.jpg" alt="">
+          <img src="img/bcnlogo.png" alt="">
         </div>
       </div>
     </div>
@@ -77,21 +86,19 @@
             </div>
           </div> 
         </div> 
-        <div class="container row ">
+        <br/>
+        <div class="container row justify-content-center ">
           <div class="col-xs-6 col-sm-4 col-md-4 ">
             <h3>MIEMBROS</h3>
             <div class="col" id="member">
             </div>
-          </div>   
-        </div>
-        <div class="container row ">
+          </div>  
           <div class="col-xs-6 col-sm-4 col-md-4 ">
             <h3>TAGS</h3>
             <div class="col" id="tags">
             </div>
-          </div>   
+          </div>
         </div>
-
         <div class="container">                     
           <div class="row justify-content-center">
             <div class="col-6 offset-md-5">
@@ -117,7 +124,163 @@
     </div>
   </div>
 
+
+  <div id="clon1">
+
+  </div>
+
   <!--Formulario aqui-->
+  <div id="tar" class="container " hidden>
+    <!--logo-->
+    <div class="row p-3 ">
+      <div class="col-md-4 ">
+        <!--imgen de empresa-->
+        <img src="img/SD.jpg" alt="" class="rounded float-left" style="height:82px;width:82px;">
+      </div>
+    </div>
+    <!--info card-->
+    <div class="row justify-content-between p-3">
+            <div class="col-md-3  badge badge-pill badge-primary">
+                <div class="row  ">
+              <!--id card className= idTar tag=p-->
+                  <div class="col-md-2">
+                      <label class="">ID: </label>
+                  </div>
+                  <div id="idTar" class=" col-md-10 text-left">
+                  </div>
+               </div>
+            </div>
+            <div id="linkTar" class="col-md-4 ">
+              <!--link tarjeta className=linkTar tag=a -->
+            </div>
+      </div>
+      <div class="row justify-content-between p-3">
+      <div class="col-md-4   badge-pill badge-primary">
+        <div class="row">
+            <div class="col-md-3">
+              <label>Nombre: </label>
+            </div>
+            <div id="nameTar" class="col-md-9 text-left">
+            <!--Nombre className=nameTar tag=p-->
+            </div>
+         </div>
+      </div>
+      <div class="col-md-4 ">
+          <div class="row">
+            <div class="col-md-4 pt-2">
+              <!--fechaInicio className=dateIni tag=p-->
+              <p class=" badge badge-pill badge-primary p-2" id="dateIni"></p>
+              <label for=""></label>
+            </div>
+            <div class="col-md-4 pt-2">
+              <!--fechaFin className=dateEnd tag=p-->
+              <p class=" badge badge-pill badge-primary p-2" id="dateEnd"></p>
+            </div>
+            <div class="col-md-4 pt-2">
+              <!--Estado tarjeta className=stateTar tag=p-->
+              <p class=" badge badge-pill badge-warning p-2" id="stateTar"></p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--tags-->
+    <div class="row ">
+      <div class="col-md-6">
+        <div class="row p-3">
+          <div class="col-md-2">
+            <label>Etiquetas: </label>
+          </div>
+          <div id="tagTar" class="col-md-9 text-left">
+        <!--Etiquetas  className= tagTar tag = p -->
+          <!--En cada div tendra estar la class" col-2 badge-color "Â¿como lo hacemos?-->
+        </div>
+        </div>
+      </div>
+    </div>
+  <div class=" container">
+    <div class="row dropdown-divider">
+      <!--Separador de secciÃ³n-->
+    </div>
+  </div>
+    <div class="row ">
+      <div class="col-md-8">
+        <!--Miembros className=mienTar  etiqueta=p-->
+        <div class="row p-3">
+          <div class="col-md-2">
+            <label for="">Miembros: </label>
+          </div>
+          <div class="col-md-9 text-left ">
+            <ul id="miemTar">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-between">
+      <div class="col-md-7 ">
+        <!--Descripcion className=desTar tag=p -->
+        <div class="row p-3">
+          <div class="col-md-12 badge badge-primary text-center">
+            <h3>DescripciÃ³n</h3>
+          </div>
+          <div class="col-md-12">
+            <p id="descTar"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ">
+        <div class="row p-3">
+          <div class="col-md-12 badge badge-primary text-center">
+            <h3>Checklist</h3>
+          </div>
+          <div class="col-md-12">
+             <!--Seccion de checklist className=checkTar tag=div -->
+            <p id="checkTar"></p>
+          </div>
+        </div>
+        <div class="check"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row p-3">
+          <div class="col-md-3">
+            <label for="">Comentarios: </label>
+          </div>
+          <div class="col-md-9 text-left">
+             <!--Comentarios className=numCom tag=p-->
+           <p id="numCom"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-end ">
+        <div class="col-md-2 ">
+          <div class="row p-3 justify-content-end ">
+            <div class="col-md-1">
+              <label >Pg: </label>
+            </div>
+            <div class="col-md-2">
+               <!--Contador de paginas className=numPag tag= p-->
+              <p id="numPag"></p>
+            </div>
+            <div class="col-md-1">
+              <label >Horas: </label>
+            </div>
+            <div class="col-md-2">
+               <!--Contador de paginas className=numPag tag= p-->
+              <p id="horasTag"></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 
 
