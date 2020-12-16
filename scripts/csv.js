@@ -1,5 +1,6 @@
-function arrayObjToCsv(ar) {
+function arrayObjToCsv(ar,check) {
 	//comprobamos compatibilidad
+	celda="";
 	if(window.Blob && (window.URL || window.webkitURL)){
 		var contenido = "",
 			d = new Date(),
@@ -10,12 +11,20 @@ function arrayObjToCsv(ar) {
 		//creamos contenido del archivo
 		for (var i = 0; i < ar.length; i++) {
 			//construimos cabecera del csv
-			if (i == 0)
-				contenido += Object.keys(ar[i]).join(",") + "\n";
+			if (i == 0){
+				//completamos celdas que se pueden repetir como el checklist
+				if(check!=0){
+					for(var c=1;c<check;c++){
+						celda=celda+"idchecklist,"
+					}
+				}
+				contenido += Object.keys(ar[i]).join(",") + celda+"\n";
+			}
 			//resto del contenido
 			contenido += Object.keys(ar[i]).map(function(key){
 							return ar[i][key];
 						}).join(",") + "\n";
+			
 		}
 		//creamos el blob
 		blob =  new Blob(["\ufeff", contenido], {type: 'text/csv'});

@@ -4,6 +4,7 @@ function Checklist(id,name,checkitem){
     this.checkitem =checkitem;
 }
 
+//hacemos una conexion sincrona con metodo get y recuperamos los checklist de un tablero
 function getCheckList(checklist,boardNo,key,token){
 
         var xmlhttpBoardName = new XMLHttpRequest();
@@ -22,13 +23,12 @@ function getCheckList(checklist,boardNo,key,token){
                 var check = new Checklist(id,name,checkitem);
                 checklist.push(check);
                 }
-                
             }
         }
         
         xmlhttpBoardName.open("GET", boardNameUrl, false);
         xmlhttpBoardName.send();
         
-        return checklist;
-    
+        //retornamos los checklist del tablero
+        return checklist; 
 }

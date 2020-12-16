@@ -1,4 +1,11 @@
 function pdf(tamaño){
+    /*
+    if(document.getElementById("gpdf")){
+        document.getElementById("gpdf").remove();
+
+    }
+    */
+
     var doc = new jsPDF();
 
     for(var i=0; i<tamaño;i++){

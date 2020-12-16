@@ -25,5 +25,4 @@ function getdate(dates,boardNo,key,token) {
     xmlhttpBoardName.send();
     
     return dates;
-
 }

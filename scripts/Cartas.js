@@ -1,15 +1,18 @@
-function Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags, tagscolor ){
+function Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags, tagscolor, idchecklist ,attach){
     this.id = id;
     this.name = name;
     this.description = description;
     this.nComent = nComent;  
     this.linkCart = linkCart; 
     this.membres = membres; 
+    this.attach = attach;
     this.dateStart = dateStart; 
     this.dateEnd = dateEnd;
     this.dateEndsBool = dateEndsBool;
     this.tags=tags;
     this.tagscolor=tagscolor;
+    this.horas =0;
+    this.idchecklist=idchecklist;
 }
 
 //hacemos una conexion sincrona con metodo get y recuperamos las tarjetas del tablero 
@@ -21,7 +24,6 @@ function getCards(cartas,boardNo,key,token) {
     xmlhttpBoardName.onreadystatechange = function() {
         if (xmlhttpBoardName.readyState === 4 && xmlhttpBoardName.status === 200) {
             var cards = JSON.parse(xmlhttpBoardName.responseText);
-            console.log(cards);
             for(var i = 0 ; i < cards.length ; i++){
                 var id = cards[i]["id"];
                 var name = cards[i]["name"];
@@ -34,6 +36,8 @@ function getCards(cartas,boardNo,key,token) {
                 var dateEndsBool = cards[i]["dueComplete"];
                 var tags = [];
                 var tagscolor =[];
+                var idchecklist =[];
+                var attach =[];
         
                 //etiquetas
                 for(var c=0;c<cards[i]["labels"].length;c++){
@@ -46,7 +50,12 @@ function getCards(cartas,boardNo,key,token) {
                     membres.push(cards[i]["idMembers"][j]);
                 }
 
-                var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ,tagscolor);
+                //idchecklist
+                for(var x = 0 ; x< cards[i]["idChecklists"].length; x++){
+                    idchecklist.push(cards[i]["idChecklists"][x]);
+                }
+
+                var carta = new Carta(id,name, description, nComent, linkCart, membres, dateStart, dateEnd,dateEndsBool, tags ,tagscolor,idchecklist, attach);
                 cartas.push(carta);
             }
         }
@@ -55,6 +64,6 @@ function getCards(cartas,boardNo,key,token) {
     xmlhttpBoardName.open("GET", boardNameUrl, false);
     xmlhttpBoardName.send();
     
+    //retornamos todas las cartas de un tablero
     return cartas;
-
 }
