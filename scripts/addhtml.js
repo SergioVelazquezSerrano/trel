@@ -3,7 +3,6 @@ function addHTML(){
 
     var filtros = filtrosbusq();
 
-    console.log(filtros)
     dateIni=filtros[0];
     dateEnd=filtros[1];
     dateEndsBool=filtros[2];
@@ -12,18 +11,18 @@ function addHTML(){
 
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool,checkmembers,ctags);
 
-
     var div = document.getElementById("tar");
     for(var i=0; i<cardsfecha.length; i++){
         var copy = div.cloneNode(true);
         copy.removeAttribute("hidden");
         var copy2 = document.getElementById("clon1");
 
-        var di = document.createElement("div");
-        di.innerHTML="<div id='"+i+"id'>";
-        copy2.appendChild(di);
-        var jo = document.getElementById(""+i+"id");
-        jo.appendChild(copy);
+        //var di = document.createElement("div");
+        //di.innerHTML="<div id='"+i+"id'>";
+        //copy2.appendChild(di);
+        //var jo = document.getElementById(""+i+"id");
+        //jo.appendChild(copy);
+        copy2.appendChild(copy);
         document.getElementById("tar").setAttribute("id", "tar"+i);
         document.getElementById("idTar").setAttribute("id", "idTar"+i);
         document.getElementById("linkTar").setAttribute("id", "linkTar"+i);
@@ -35,6 +34,7 @@ function addHTML(){
         document.getElementById("descTar").setAttribute("id", "descTar"+i);
         document.getElementById("miemTar").setAttribute("id", "miemTar"+i);
         document.getElementById("numCom").setAttribute("id", "numCom"+i);
+        document.getElementById("checkTar").setAttribute("id", "checkTar"+i);
         document.getElementById("horasTag").setAttribute("id", "horasTag"+i);
         document.getElementById("numPag").setAttribute("id", "numPag"+i);
 
@@ -90,12 +90,15 @@ function addHTML(){
                     break;
                     case "dateEndsBool":
                         var d = document.createElement("p");
+                        d2 = document.getElementById("stateTar"+i);
+
                         if(cardsfecha[i].dateEndsBool===true){
                             d.innerHTML=" Terminada ";
+                            d2.style.background="green";
                         }else{
                             d.innerHTML=" No Terminada ";
+                            d2.style.background="red";
                         }
-                        d2 = document.getElementById("stateTar"+i);
                         d2.appendChild(d);    
                     break;
                     case "tags":
@@ -146,6 +149,30 @@ function addHTML(){
                         h.innerHTML=" "+cardsfecha[i].horas+" ";
                         h2=document.getElementById("horasTag"+i);
                         h2.appendChild(h);                 
+                    break;
+                    case"idchecklist":
+                        if(cardsfecha[i].idchecklist.length>0){
+                            for(var c=0 ; c<cardsfecha[i].idchecklist.length ; c++){
+                                var dc = document.createElement("div");
+                                dc.style.border="solid 1px silver";
+                                dc.style.borderRadius="25px"
+                                var ulc = document.createElement("ul");
+                                ulc.textContent = cardsfecha[i].idchecklist[c]["name"];
+                                for(var cc=0; cc<cardsfecha[i].idchecklist[c]["checkitem"].length; cc++){
+                                    lic = document.createElement("li");
+                                    lic.textContent=cardsfecha[i].idchecklist[c]["checkitem"][cc]["name"] +" " +cardsfecha[i].idchecklist[c]["checkitem"][cc]["state"] ;
+                                    if(cardsfecha[i].idchecklist[c]["checkitem"][cc]["state"]==="complete"){
+                                        lic.style.background="lime";
+                                    }else{
+                                        lic.style.background="orange";
+                                    }
+                                    ulc.appendChild(lic);
+                                }
+                                dc.appendChild(ulc);
+                                ic=document.getElementById("checkTar"+i);
+                                ic.appendChild(dc);
+                            }
+                        }
                     break;
 
 

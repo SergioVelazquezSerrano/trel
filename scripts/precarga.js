@@ -5,10 +5,19 @@ function precarga(cardsfecha){
     document.getElementById("generarpdf").style.display = 'none';
 
     //borramos contenido clon1
-    const myNod = document.getElementById("clon1");
+    const myNo = document.getElementById("clon1");
+    while (myNo.firstChild) {
+        myNo.removeChild(myNo.lastChild);
+    }
+    const myNod = document.getElementById("generarcsv");
         while (myNod.firstChild) {
             myNod.removeChild(myNod.lastChild);
         }
+    const myNod1 = document.getElementById("generarpdf");
+        while (myNod1.firstChild) {
+            myNod1.removeChild(myNod1.lastChild);
+    }
+
 
 
     document.getElementById("pre").style.display = 'block';
