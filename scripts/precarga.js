@@ -27,6 +27,7 @@ function precarga(cardsfecha){
     var pre = document.getElementById("pre");
     var div = document.createElement("div");
     for( var i = 0 ; i< cardsfecha.length; i++ ){
+<<<<<<< HEAD
         cont = cont + "<div class='col'>";
         cont = cont + "<div class='row  row-cols-sm-2 row-cols-md-2'><div class='col'>";
         cont = cont + "<p>"+cardsfecha[i]["name"]+"</p>";
@@ -34,6 +35,10 @@ function precarga(cardsfecha){
         cont = cont + "<input  id='"+cardsfecha[i]["id"]+"' type='number' value='"+cardsfecha[i]["horas"] + "'/>";
         cont = cont + "</div></div>"
         cont = cont + " </div>";
+=======
+        cont = cont + "<p>"+cardsfecha[i]["name"].slice(0,120);
+        cont = cont + "<input  id='"+cardsfecha[i]["id"]+"' type='number' value='"+cardsfecha[i]["horas"] + "'/>"+"</p>";
+>>>>>>> 0a36fdbed7b04789cb4ffecbe02d2fea4b572c29
     }
 
     div.innerHTML= cont ;
