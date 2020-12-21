@@ -28,7 +28,7 @@ function precarga(cardsfecha){
     var pre = document.getElementById("pre");
     var div = document.createElement("div");
     for( var i = 0 ; i< cardsfecha.length; i++ ){
-        cont = cont + "<p>"+cardsfecha[i]["name"];
+        cont = cont + "<p>"+cardsfecha[i]["name"].slice(0,120);
         cont = cont + "<input  id='"+cardsfecha[i]["id"]+"' type='number' value='"+cardsfecha[i]["horas"] + "'/>"+"</p>";
     }
 
