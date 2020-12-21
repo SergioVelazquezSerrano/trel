@@ -123,7 +123,7 @@ function pdf(){
                                                         columns:[                                                           
                                                                     {
                                                                         text:cardsfecha[i].id,
-                                                                        margin:[10,0]
+                                                                       
                                                                     },
                                                                 ]
                                                     },

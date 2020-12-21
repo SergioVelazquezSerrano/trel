@@ -3,7 +3,7 @@ function addHTML(){
 
     var filtros = filtrosbusq();
 
-    console.log(filtros)
+   
     dateIni=filtros[0];
     dateEnd=filtros[1];
     dateEndsBool=filtros[2];
