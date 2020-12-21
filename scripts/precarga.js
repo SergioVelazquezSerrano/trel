@@ -9,30 +9,36 @@ function precarga(cardsfecha){
     while (myNo.firstChild) {
         myNo.removeChild(myNo.lastChild);
     }
+
     const myNod = document.getElementById("generarcsv");
         while (myNod.firstChild) {
             myNod.removeChild(myNod.lastChild);
         }
+
     const myNod1 = document.getElementById("generarpdf");
         while (myNod1.firstChild) {
             myNod1.removeChild(myNod1.lastChild);
-    }
-
-
-
+        }
     document.getElementById("pre").style.display = 'block';
-
+    document.getElementById("preload").style.display = 'inline';    
 
     //mostramos el nombre de las cartas resultantes con un input tipo number que rellenara usuario si quiere
     var cont ="";
     var pre = document.getElementById("pre");
     var div = document.createElement("div");
     for( var i = 0 ; i< cardsfecha.length; i++ ){
-        cont = cont + "<p>"+cardsfecha[i]["name"];
-        cont = cont + "<input  id='"+cardsfecha[i]["id"]+"' type='number' value='"+cardsfecha[i]["horas"] + "'/>"+"</p>";
+        cont = cont + "<div class='col'>";
+        cont = cont + "<div class='row  row-cols-sm-2 row-cols-md-2'><div class='col'>";
+        cont = cont + "<p>"+cardsfecha[i]["name"]+"</p>";
+        cont = cont + "</div><div class='col'>";
+        cont = cont + "<input  id='"+cardsfecha[i]["id"]+"' type='number' value='"+cardsfecha[i]["horas"] + "'/>";
+        cont = cont + "</div></div>"
+        cont = cont + " </div>";
     }
 
-    div.innerHTML= cont + "<br/>"; 
+    div.innerHTML= cont ;
+    div.id="preCont";
+    div.className="row row-cols-1 row-cols-sm-2 row-cols-md-2 d-flex justify-content-center p-3"; 
     pre.appendChild(div);
 
     //iteramos por cada valor del objeto resultante para añadirle a los input number un evento onchange que hara
@@ -53,7 +59,8 @@ function precarga(cardsfecha){
     var pre2 = document.getElementById("pre");
     var div2 = document.createElement("div");
 
-    div2.innerHTML=  "<input type='submit' onclick='preca(event)'/>";
+    div2.innerHTML=  "<input type='submit' id='btnpre' onclick='preca(event)'/>";
+    div2.className="row d-flex justify-content-center p-4"
     pre2.appendChild(div2);
 
     //retornamos nuestro objeto final que pudo ser modificado
@@ -70,6 +77,7 @@ function preca(ev){
     document.getElementById("generarcsv").style.display = 'block';
     document.getElementById("generarpdf").style.display = 'block';
     addHTML();
+    document.getElementById("preload").style.display = 'none';    
 
     //eliminamos nuestra pagina precarga
     const myNode = document.getElementById("pre");

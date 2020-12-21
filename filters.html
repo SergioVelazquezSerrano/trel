@@ -34,14 +34,8 @@
     <script src="scripts/search.js"></script>
     <script src="scripts/downloadcsv.js"></script>
     <script src="scripts/precarga.js"></script>
-
-    <style>
-      img{ 
-        width: 400px;
-        height: 200px;
-        margin-left: -140px;
-      }
-    </style>
+    <link rel="stylesheet" href="css/estyle.css">
+   
     
   </head>
 
@@ -49,60 +43,97 @@
 
   <div id="pr">
     <div class="container" >
-      <div class="row align-items-center mt-3">
-        <div class="col-sm-6 col-md-6 offset-md-4">
-          <h1 >PRINT CSV</h1>
+      
+      <div class="row d-flex justify-content-center ">
+        <div class="col-sm-6 col-md-6 text-center">
+          <img src="img/bcn.png" alt="" class="img-fluid">
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col-sm-6 col-md-6 offset-md-4">
-          <img src="img/bcnlogo.png" alt="">
+      <div class="row d-flex justify-content-xs-center  justify-content-sm-center justify-content-md-start ">
+        <div class="col-xs-6 col-sm-6 col-md-6 ">
+          <h4 >FILTRO DE TARJETA</h4>
         </div>
+      </div>
+      <div class="col-md-12 dropdown-divider text-center">
+        <!--Separador de secciÃ³n-->
       </div>
     </div>
 
     <div class="container"> 
+      
       <form id="form2">
-        <div class="container row ">
+        <div class="row  pt-2 pb-3">
           <div class="col-xs-6 col-sm-4 col-md-4 ">
-            <div class="col">
-              <label for=""> Fecha inicio </label>
-            </div>            
-            <input type="date" id="fechIni" min="" max="2021-12-31" step="1" />
+            <div class="row d-flex justify-content-center">
+              <div class="col-sm-12 col-md-12 text-center">
+                <label for=""> Fecha inicio </label>
+              </div>
+              <div class="col-sm-12 col-md-12 text-center">
+                <input type="date" id="fechIni" min="" max="2021-12-31" step="1" />
+              </div>            
+            </div>
           </div>
           <div class="col-sm-8 col-md-8 ">
-            <div class="row ">
-              <div class="col">
+            <div class="row">
+              
                 <div class="col-sx-6 col-sm-7 col-md-6">
-                  <label for=""> Fecha fin </label>
-                </div class="">
-                <input type="date" id="fechEnd" min="" max="2021-12-31" step="1" />      
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <label for=""> Fecha fin </label>
+                    </div>  
+                    <div class="col-md-12 text-center">
+                      <input type="date" id="fechEnd" min="" max="2021-12-31" step="1" /> 
+                    </div>
+                  </div>
+                       
                 </div>
-                <div class="col-xs-7 col-sm-8 col-md-6 mt-4">
+                <div class="col-xs-6 col-sm-5 col-md-6 mt-4">
                   <input type="checkbox" id="dataEndBool"/>
                   <label for="">¿ También los no finalizados ?</label>
                 </div>
-              </div>
+            
             </div>
           </div> 
+          
         </div> 
-        <br/>
-        <div class="container row justify-content-center ">
-          <div class="col-xs-6 col-sm-4 col-md-4 ">
-            <h3>MIEMBROS</h3>
-            <div class="col" id="member">
-            </div>
+        <div class="col-md-12 pt-3 dropdown-divider text-center">
+          <!--Separador de secciÃ³n-->
+        </div>
+
+        <div class="row  pt-3 " >
+          <div class="col-xs-6 col-sm-6 col-md-6 memtag">
+            <div class="row d-flex justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <h3>MIEMBROS</h3>
+              </div>
+              <div class="col-md-10 dropdown-divider ">
+                <!--Separador de secciÃ³n-->
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="container" id="member">
+                </div>
+              </div>
+            </div>  
           </div>  
-          <div class="col-xs-6 col-sm-4 col-md-4 ">
-            <h3>TAGS</h3>
-            <div class="col" id="tags">
+          <div class="col-xs-6 col-sm-6 col-md-6  memtag2">
+            <div class="row d-flex justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12  text-center">
+                <h3>TAGS</h3>    
+              </div>
+              <div class="col-md-10 dropdown-divider text-center">
+                <!--Separador de secciÃ³n-->
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="container " id="tags">
+                </div>    
+              </div>
             </div>
           </div>
         </div>
         <div class="container">                     
-          <div class="row justify-content-center">
-            <div class="col-6 offset-md-5">
-              <input type="submit" value="Generar"  onclick="search(event)"  class="btn btn-primary"/>
+          <div class="row justify-content-center pt-3">
+            <div class="col-md-6  pt-2 d-flex justify-content-center">
+              <input type="submit" value="Generar"   onclick="search(event)"  class="btn btn-primary btgenera"/>
             </div> 
           </div>
         </div>
@@ -111,14 +142,14 @@
     
     <div class="container">                     
       <div class="row justify-content-center">
-        <div class="col-6 offset-md-5" id="generarcsv">
+        <div class="col-sm-6 col-md-6 pt-2 text-center" id="generarcsv">
         </div> 
       </div>
     </div>
 
     <div class="container">                     
-      <div class="row justify-content-center">
-        <div class="col-6 offset-md-5" id="generarpdf">
+      <div class="row d-flex justify-content-center">
+        <div class="col-sm-6 col-md-6 pt-2 text-center " id="generarpdf">
         </div> 
       </div>
     </div>
@@ -132,108 +163,120 @@
   <!--Formulario aqui-->
   <div id="tar" class="container " hidden>
     <!--logo-->
-    <div class="row p-3 ">
+    <div class="row dropdown-divider slipdf" >
+      <!--Separador de secciÃ³n-->
+    </div>
+    <div class="row pt-2 ">
       <div class="col-md-4 ">
         <!--imgen de empresa-->
-        <img src="img/SD.jpg" alt="" class="rounded float-left" style="height:82px;width:82px;">
+        <img src="img/bcn.png" alt="" class=" rounded float-left  d-none d-sm-block" style="height:90px;width:150px;border: black solid 1px;">
       </div>
     </div>
     <!--info card-->
-    <div class="row justify-content-between p-3">
-            <div class="col-md-3  badge badge-pill badge-primary">
-                <div class="row  ">
+    <div class="row justify-content-between pt-1  ">
+            <div class="col-md-3  badge-pill idT">
+                <div class="row pt-1">
               <!--id card className= idTar tag=p-->
-                  <div class="col-md-2">
-                      <label class="">ID: </label>
-                  </div>
-                  <div id="idTar" class=" col-md-10 text-left">
+                  <div id="idTar" class=" col-md-12 text-left  ">
                   </div>
                </div>
             </div>
-            <div id="linkTar" class="col-md-4 ">
+            <div id="linkTar" class="col-md-4 badge badge-pill idL">
               <!--link tarjeta className=linkTar tag=a -->
             </div>
       </div>
-      <div class="row justify-content-between p-3">
-      <div class="col-md-4   badge-pill badge-primary">
-        <div class="row">
-            <div class="col-md-3">
-              <label>Nombre: </label>
-            </div>
-            <div id="nameTar" class="col-md-9 text-left">
-            <!--Nombre className=nameTar tag=p-->
-            </div>
-         </div>
-      </div>
+      <div class="row justify-content-between p-1">
+        <div class="col-md-4  badge-pill nameT">
+          <div class="row pt-1 justify-content-start  ">
+              <div class=" col-md-3  badge d-none d-sm-block">
+                <label>Nombre: </label>
+              </div>
+              <div id="nameTar" class="col-sm-12 col-md-9 text-center">
+              <!--Nombre className=nameTar tag=p-->
+              </div>
+          </div>
+        </div>
       <div class="col-md-4 ">
-          <div class="row">
-            <div class="col-md-4 pt-2">
+          <div class="row d-flex justify-content-between">
+            <div class="col-md-4  badge-pill fIni text-center ">
               <!--fechaInicio className=dateIni tag=p-->
-              <p class=" badge badge-pill badge-primary p-2" id="dateIni"></p>
-              <label for=""></label>
+              <p class=" " id="dateIni"></p>
             </div>
-            <div class="col-md-4 pt-2">
+            <div class="col-md-4 badge-pill  fFin  text-center">
               <!--fechaFin className=dateEnd tag=p-->
-              <p class=" badge badge-pill badge-primary p-2" id="dateEnd"></p>
+              <p class="  " id="dateEnd"></p>
             </div>
-            <div class="col-md-4 pt-2">
+            <div class="col-md-4 badge-pill  state text-center">
               <!--Estado tarjeta className=stateTar tag=p-->
-              <p class=" badge badge-pill badge-warning p-2" id="stateTar"></p>
+              <p class="  " style="border-radius: 25px;" id="stateTar"></p>
             </div>
           </div>
         </div>
     </div>
     <!--tags-->
-    <div class="row ">
-      <div class="col-md-6">
-        <div class="row p-3">
-          <div class="col-md-2">
+    <div class="row justify-content-between ">
+      <div class="col-sm-12 col-md-6 ">
+        <div class="row pt-2">
+          <div class="col-sm-12 col-md-12 ml-1 badge text-left">
             <label>Etiquetas: </label>
           </div>
-          <div id="tagTar" class="col-md-9 text-left">
+          <div class="tagN badge-pill col-sm-12 col-md-12 text-left">
+            <div id="tagTar" class=" tagUd row row-cols-2 row-cols-sm-4 row-cols-md-4 d-flex justify-content-left  ">
+
+            </div>
         <!--Etiquetas  className= tagTar tag = p -->
           <!--En cada div tendra estar la class" col-2 badge-color "Â¿como lo hacemos?-->
         </div>
         </div>
       </div>
+      <div class="col-md-4  tagT">
+        <div class="row pt-2">
+          <div class="col-sm-12 col-md-12 badge text-left">
+            <label >Horas Invertidas: </label>
+          </div>
+          <div class="tagH badge-pill col-sm-12  col-md-12 ">
+            <!--Horas empleadas en la tarjeta id=horasTag tag= p-->
+           <p id="horasTag"></p>
+         </div>
+        </div>
+      </div>
     </div>
-  <div class=" container">
-    <div class="row dropdown-divider">
+    <div class="row mt-1 mb-1 dropdown-divider ">
       <!--Separador de secciÃ³n-->
     </div>
-  </div>
     <div class="row ">
-      <div class="col-md-8">
+      <div class="col-sm-12 col-md-6">
         <!--Miembros className=mienTar  etiqueta=p-->
-        <div class="row p-3">
-          <div class="col-md-2">
-            <label for="">Miembros: </label>
+        <div class="row pt-1">
+          <div class="col-sm-12 col-md-12 text-left badge">
+            <label for="">Miembros </label>
           </div>
-          <div class="col-md-9 text-left ">
-            <ul id="miemTar">
-            </ul>
+          <div  class="memT badge-pill col-sm-12 col-md-12 text-left ">
+            <div class="memE row row-cols-2 row-cols-sm-4 row-cols-md-4 d-flex justify-content-left" id="miemTar">
+
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="row justify-content-between">
-      <div class="col-md-7 ">
+      <div class="col-sm-12 col-md-6 ">
         <!--Descripcion className=desTar tag=p -->
-        <div class="row p-3">
-          <div class="col-md-12 badge badge-primary text-center">
-            <h3>DescripciÃ³n</h3>
+        <div class="row pt-3">
+          <div class="subT col-sm-12 col-md-12 badge-pill badge badge-primary text-center">
+            <h3 class="">Descripción</h3>
           </div>
-          <div class="col-md-12">
+          <div class="desT col-sm-12 col-md-12 ">
             <p id="descTar"></p>
           </div>
         </div>
       </div>
       <div class="col-md-4 ">
-        <div class="row p-3">
-          <div class="col-md-12 badge badge-primary text-center">
-            <h3>Checklist</h3>
+        <div class="row pt-3">
+          <div class="subT2 col-md-12 badge badge-pill badge-primary text-center">
+            <h3 class="">Checklist</h3>
           </div>
-          <div class="col-md-12">
+          <div class="checkT col-md-12">
              <!--Seccion de checklist className=checkTar tag=div -->
             <p id="checkTar"></p>
           </div>
@@ -241,52 +284,70 @@
         <div class="check"></div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="row p-3">
-          <div class="col-md-3">
-            <label for="">Comentarios: </label>
+    <div class="row mb-1">
+      <div class="col-md-4 ">
+        <div class="row pt-2 row-cols-sm-2 row-cols-md-2 badge-pill comT">
+          <div class="col">
+            <label for="" class="">Comentarios: </label>
           </div>
-          <div class="col-md-9 text-left">
+          <div class="col text-left">
              <!--Comentarios className=numCom tag=p-->
            <p id="numCom"></p>
           </div>
-        </div>
+        </div>  
       </div>
     </div>
-    <div class="container">
-      <div class="row justify-content-end ">
-        <div class="col-md-2 ">
-          <div class="row p-3 justify-content-end ">
-            <div class="col-md-1">
+
+  
+      <div class="pie row d-flex justify-content-xs-center justify-content-sm-center justify-content-md-end ">
+        <div class="col-xs-2 col-sm-2 col-md-2 ">
+          <div class="row p-2 row-cols-2 row-cols-sm-2 row-cols-md-2 d-flex justify-content-center ">
+            <div class="col text-white text-right">
               <label >Pg: </label>
             </div>
-            <div class="col-md-2">
-               <!--Contador de paginas className=numPag tag= p-->
-              <p id="numPag"></p>
-            </div>
-            <div class="col-md-1">
-              <label >Horas: </label>
-            </div>
-            <div class="col-md-2">
-               <!--Contador de paginas className=numPag tag= p-->
-              <p id="horasTag"></p>
-            </div>
+            <div class="col">
+               <!--Contador de paginas id=numTag tag= p-->
+              <p id="numPag" class="text-white "></p>
+            </div> 
+           
+           
 
           </div>
         </div>
       </div>
+  
+  </div>
+
+
+
+
+
+<!--plantilla precarga /generar plantilla a hidden -->
+<div id="preload">
+  <div class="container">
+     <div class="row d-flex justify-content-center ">
+      <div class="col-sm-6 col-md-4 text-center ">
+        <img src="img/bcn.png" alt="" class="">
+      </div>
+    </div> 
+    <div class="row  d-flex  justify-content-start">
+      <div class="col-sm-3 col-md-4  text-center">
+        <h4 >Horas de cada tarjeta</h4>
+      </div>
+    </div>
+      <div class="row dropdown-divider slipdf" >
+    <!--Separador de secciÃ³n-->
     </div>
   </div>
+  <div id="pre" class="container mt-4">
 
-
-
-
-
-
-  <div id="pre">
 
   </div>
+  <div class="row dropdown-divider slipdf" >
+    <!--Separador de secciÃ³n-->
+  </div>
+</div>
+  
   </body>
   
 </html>

@@ -15,6 +15,7 @@ function login(ev){
 
     //ocultamos contenido de la pagina para realizar una precarga
     document.getElementById("log").style.display = 'none';
+    document.getElementById("selectCheck").style.display = 'inline';
 
     //guardamos en tableros los tableros de un usuario
     tableros = getTableros(tableros,username,key,token);
@@ -22,16 +23,18 @@ function login(ev){
     //mostramos los tableros del usuario
     var bor ="";
     var tabl = document.getElementById("tabl");
-    var div = document.createElement("div");        
+    const div = document.createElement("div");
+            
 
     for(var i = 0 ; i < tableros.length ; i++){
             var id = tableros[i]["id"];
             var name = tableros[i]["name"];
-            bor = bor + "<input type='checkbox' id="+id+" value="+id+"/>";
-            bor = bor + "<label for="+id+">"+ name+"</label><br>"    
+            bor = bor + "<div class='col '><input type='checkbox' id="+id+" value="+id+"/>";
+            bor = bor + "<label for="+id+">"+ name+"</label> </div>"    
         }
     
     div.innerHTML = bor;
+    div.className="row row-cols-1 row-cols-sm-2 row-cols-md-3 d-flex justify-content-center";
     tabl.appendChild(div);
 
     //asignamos evento onchange a cada input checkbox para que seleccione dicho input para trabajar con el

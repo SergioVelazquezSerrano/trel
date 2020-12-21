@@ -3,6 +3,7 @@ function addHTML(){
 
     var filtros = filtrosbusq();
 
+    console.log(filtros)
     dateIni=filtros[0];
     dateEnd=filtros[1];
     dateEndsBool=filtros[2];
@@ -11,18 +12,18 @@ function addHTML(){
 
     var cardsfecha = filter(cardsfecha,cardsfin,dateIni,dateEnd,dateEndsBool,checkmembers,ctags);
 
+
     var div = document.getElementById("tar");
     for(var i=0; i<cardsfecha.length; i++){
         var copy = div.cloneNode(true);
         copy.removeAttribute("hidden");
         var copy2 = document.getElementById("clon1");
 
-        //var di = document.createElement("div");
-        //di.innerHTML="<div id='"+i+"id'>";
-        //copy2.appendChild(di);
-        //var jo = document.getElementById(""+i+"id");
-        //jo.appendChild(copy);
-        copy2.appendChild(copy);
+        var di = document.createElement("div");
+        di.innerHTML="<div id='"+i+"id'>";
+        copy2.appendChild(di);
+        var jo = document.getElementById(""+i+"id");
+        jo.appendChild(copy);
         document.getElementById("tar").setAttribute("id", "tar"+i);
         document.getElementById("idTar").setAttribute("id", "idTar"+i);
         document.getElementById("linkTar").setAttribute("id", "linkTar"+i);
@@ -56,15 +57,24 @@ function addHTML(){
                     break;
                     case "linkCart":
                         var a = document.createElement("div");
-                        a.innerHTML="<a href='"+cardsfecha[i].linkCart+"' >'"+cardsfecha[i].linkCart+"'</a>";
+                        a.innerHTML="<a href='"+cardsfecha[i].linkCart+"' >'"+"Enlace a la tarjeta aquí"+"'</a>";
                         a2=document.getElementById("linkTar"+i);
                         a2.appendChild(a);
+                        
                     break;
                     case "name":
                         var n = document.createElement("p");
-                        n.innerHTML=" "+cardsfecha[i].name+" ";
+                        if(cardsfecha[i].name.length>20){
+                            var text = cardsfecha[i].name.slice(0,25);
+                            text = text +"..."
+                        }else{
+                            var text=cardsfecha[i].name;
+                        }
+                        n.innerHTML=" "+text+" ";
                         p2 = document.getElementById("nameTar"+i);
                         p2.appendChild(n);
+                        /*control de caracteres*/
+                       
                     break;
                     case "dateStart":
                         var d = document.createElement("p");
@@ -91,21 +101,25 @@ function addHTML(){
                     case "dateEndsBool":
                         var d = document.createElement("p");
                         d2 = document.getElementById("stateTar"+i);
-
                         if(cardsfecha[i].dateEndsBool===true){
                             d.innerHTML=" Terminada ";
                             d2.style.background="green";
+                            d.style.color="white";
+                           
                         }else{
                             d.innerHTML=" No Terminada ";
                             d2.style.background="red";
+                            d.style.color="white";
                         }
+                    
                         d2.appendChild(d);    
                     break;
                     case "tags":
                         if(cardsfecha[i].tags.length>0){
                             for( var t = 0 ; t<cardsfecha[i].tags.length ; t++){
                                 var nt = document.createElement("div");
-                                nt.innerHTML=""+cardsfecha[i].tags[t]+"";
+                                nt.innerHTML="<p>"+cardsfecha[i].tags[t]+"</p>";
+                                nt.className="col";
                                 nt.style.background=cardsfecha[i].tagscolor[t];
                                 if(cardsfecha[i].tagscolor[t]==="black"){
                                     nt.style.color="white";
@@ -131,8 +145,9 @@ function addHTML(){
                     case "membres":
                         if(cardsfecha[i].membres.length>0){
                             for( var t = 0 ; t<cardsfecha[i].membres.length ; t++){
-                                var m = document.createElement("li");
-                                m.innerHTML=""+cardsfecha[i].membres[t]+"";
+                                var m = document.createElement("div");
+                                m.innerHTML="<p>"+cardsfecha[i].membres[t]+"</p>";
+                                m.className="col";
                                 m2 = document.getElementById("miemTar"+i);
                                 m2.appendChild(m);
                             }
@@ -160,6 +175,7 @@ function addHTML(){
                                 ulc.textContent = cardsfecha[i].idchecklist[c]["name"];
                                 for(var cc=0; cc<cardsfecha[i].idchecklist[c]["checkitem"].length; cc++){
                                     lic = document.createElement("li");
+                                  
                                     lic.textContent=cardsfecha[i].idchecklist[c]["checkitem"][cc]["name"] +" " +cardsfecha[i].idchecklist[c]["checkitem"][cc]["state"] ;
                                     if(cardsfecha[i].idchecklist[c]["checkitem"][cc]["state"]==="complete"){
                                         lic.style.background="lime";

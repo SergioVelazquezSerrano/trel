@@ -1,5 +1,168 @@
 
 body{
-    padding: 20px;
-    background: whitesmoke;
+    padding: 10px;
+  
 }
+
+img{ 
+    width: 400px;
+    height: 150px;
+   
+  }
+ .slipdf{
+     height: 4px;
+ }
+/*pagina de seleccion de tarjetas*/
+#selectCheck{
+    display: none;
+ 
+}
+#selectCheck .hdcheck{
+    padding-top: 40px;
+}
+#tabl {
+    border:#0569c7 solid 1px;
+    border-radius: 80px 20px;
+    
+}
+#tabl div{
+    padding-left: 20px;
+    margin: 2px;
+}
+.memtag, .memtag2{
+    border: #0569c7 solid 1px;
+    border-radius: 80px 20px;
+    
+}
+#member div, #tags div {
+padding-left: 24px;
+}
+.memE div{
+    border:white solid 1px;
+    border-radius: 25px;  
+    height: 20px;
+}
+.memE div p{
+    
+    font-size: 10px;
+}
+
+
+.btgenera{
+    width: 250px;
+}
+/* plantilla pdf*/
+
+
+
+#log{
+    padding-top: 40px;
+    
+}
+
+.idT{
+   
+    height: 25px;
+ 
+}
+.idT div p{
+    font-size: 12px;
+}
+.idL{
+     border: #00DFFC solid 1px;
+}
+.idL div {
+    padding-top: 3px;
+}
+.idL div a {
+   
+color: blue;
+}
+.nameT{
+    border:#00DFFC solid 1px;
+    height: 30px;
+}
+.nameT div div p{
+    font-size: 14px;
+}
+.fIni, .fFin {
+    border:#00DFFC solid 1px;
+    height: 30px;
+}
+.fIni p, .fFin p , .state p{
+    font-size: 12px;
+    color: black;
+    padding-top: 3px;
+}
+
+.state{
+   
+    height: 30px;
+}
+.tagH {
+    border: #00DFFC solid 1px;
+    height: 30px;
+}
+ 
+
+.tagUd div{
+    margin-top: 4px;
+    height: 20px;
+}
+.tagUd div p{
+    margin-top: 2px;
+    font-size: 10px;
+}
+.subT h3, .subT2 h3{
+    font-size:  1.0rem;
+}
+.desT{
+    border: white solid 1px ;
+    height: 300px;
+}
+.checkT{
+    border: white solid 1px ;
+    height: 300px;
+    overflow: scroll;
+}
+.comT{
+    border:#00DFFC solid 1px ;
+}
+.pie{
+    border-radius: 15px;
+    background: #0569c7;
+
+}
+/* css precarga*/
+#btnpre{
+    
+ border-radius: 5px;
+ background: blue;
+ color: white;
+ height: 42px;
+ width: 250px;
+}
+
+#preCont{
+    border: #0569c7 solid 1px;
+    border-radius: 80px 20px;
+     
+}
+
+#preCont div div div input{
+    width: 80px;
+
+}
+#preload{
+    display: none;
+}
+
+/*pagina cargado pdf*/
+#generarcsv div input,#generarpdf div input{
+
+    border-radius: 5px;
+   
+    height: 42px;
+    width: 250px;    
+}
+

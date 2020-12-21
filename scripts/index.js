@@ -59,10 +59,11 @@ window.onload = function dinamic(){
     for(var i = 0 ; i < membreslist.length ; i++){
         var memb = document.getElementById("member");
         var div = document.createElement("div");
-        mem = mem + "<input type='checkbox' id="+membreslist[i]["name"]+" name="+membreslist[i]["name"]+" value="+membreslist[i]["name"]+"/>";
-        mem = mem + "<label for="+membreslist[i]["name"]+">"+ membreslist[i]["name"]+"</label><br>"
+        mem = mem + "<div class='col'><input type='checkbox' id="+membreslist[i]["name"]+" name="+membreslist[i]["name"]+" value="+membreslist[i]["name"]+"/>";
+        mem = mem + "<label for="+membreslist[i]["name"]+">"+ membreslist[i]["name"]+"</label></div>"
     }
     div.innerHTML = mem;
+    div.className="row row-cols-1 row-cols-sm-2 row-cols-md-2 d-flex justify-content-center";
     memb.appendChild(div);
 
     var tag ="";
@@ -71,11 +72,12 @@ window.onload = function dinamic(){
             var id = labels[i]["name"].replaceAll(" ","");
             var tags = document.getElementById("tags");
             var div = document.createElement("div");
-            tag = tag + "<input type='checkbox' id="+id+" name="+id+" value="+id+"/>";
-            tag = tag + "<label for="+id+">"+ labels[i]["name"]+"</label><br>"    
+            tag = tag + "<div class='col'><input type='checkbox' id="+id+" name="+id+" value="+id+"/>";
+            tag = tag + "<label for="+id+">"+ labels[i]["name"]+"</label></div>"    
         }
     }
     div.innerHTML = tag;
+    div.className="row row-cols-1 row-cols-sm-2 row-cols-md-2 d-flex justify-content-center";
     tags.appendChild(div);
 
 }
